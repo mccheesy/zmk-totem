@@ -1,0 +1,11 @@
+name: totem
+description: Totem split keyboard
+author: mccheesy
+license: MIT
+url: https://github.com/mccheesy/zmk-totem
+version: 1.0.0
+build:
+  - name: totem_left
+    board: totem_left
+  - name: totem_right
+    board: totem_right

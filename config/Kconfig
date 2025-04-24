@@ -1,0 +1,21 @@
+source "Kconfig.zmk"
+
+config ZMK_KEYBOARD_NAME
+    default "totem"
+
+if ZMK_KEYBOARD_NAME
+
+config ZMK_KEYBOARD
+    default "totem"
+
+if ZMK_KEYBOARD
+
+config ZMK_SPLIT
+    default y
+
+config ZMK_SPLIT_BLE_ROLE_CENTRAL
+    default y
+
+endif # ZMK_KEYBOARD
+
+endif # ZMK_KEYBOARD_NAME

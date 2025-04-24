@@ -1,0 +1,22 @@
+/dts-v1/;
+#include <nordic/nrf52840_qiaa.dtsi>
+#include "totem.dtsi"
+
+/ {
+    model = "totem_right";
+    compatible = "totem,right";
+
+    chosen {
+        zephyr,console = &cdc_acm_uart;
+    };
+};
+
+&default_transform {
+    col-gpios
+        = <&gpio0 22 GPIO_ACTIVE_HIGH>
+        , <&gpio1  0 GPIO_ACTIVE_HIGH>
+        , <&gpio1  3 GPIO_ACTIVE_HIGH>
+        , <&gpio1  1 GPIO_ACTIVE_HIGH>
+        , <&gpio1  2 GPIO_ACTIVE_HIGH>
+        ;
+};
