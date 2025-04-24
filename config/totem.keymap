@@ -66,7 +66,7 @@
 
         bootloader {
             bindings = <&bootloader>;
-            key-positions = <30 31>;
+            key-positions = <30 39>;
         };
     };
 
@@ -81,9 +81,9 @@ display-name = "base"                      ;
 //             ┏━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━┓   ┏━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━┓
 //             ┃       Q       ┃       W       ┃       F       ┃       P       ┃       G       ┃   ┃       J       ┃       L       ┃       U       ┃       Y       ┃       ;       ┃
 //             ┣━━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━━┫   ┣━━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━━┫
-//             ┃       A       ┃       R       ┃       S       ┃       T       ┃       D       ┃   ┃       H       ┃       N       ┃       E       ┃       I       ┃       O       ┃
+//             ┃       A       ┃       R       ┃       S       ┃       T       ┃       D       ┃   ┃       M       ┃       N       ┃       E       ┃       I       ┃       O       ┃
 // ┏━━━━━━━━━━━╋━━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━━┫   ┣━━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━━╋━━━━━━━━━━━┓
-// ┃     Q     ┃       Z       ┃       X       ┃       C       ┃       V       ┃       B       ┃   ┃       K       ┃       M       ┃       ,       ┃       .       ┃       /       ┃     \     ┃
+// ┃     Q     ┃       Z       ┃       X       ┃       C       ┃       V       ┃       B       ┃   ┃       K       ┃       H       ┃       ,       ┃       .       ┃       /       ┃     \     ┃
 // ┗━━━━━━━━━━━┻━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━━┫   ┣━━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━┻━━━━━━━━━━━┛
 //                                             ┃      DEL      ┃      TAB      ┃      SPC      ┃   ┃     ENTER     ┃     BSPC      ┃      DEL      ┃
 //                                             ┗━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━┛   ┗━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━┛
@@ -92,7 +92,7 @@ display-name = "base"                      ;
 
                 &kp Q           &kp W           &kp F           &kp P           &kp B               &kp J           &kp L           &kp U           &kp Y           &kp APOS
                 &mt LGUI A      &mt LALT R      &mt LCTRL S     &mt LSHFT T     &mt LMEH G          &mt RMEH M      &mt RSHFT N     &mt RCTRL E     &mt RALT I      &mt RGUI O
-    &kp Q       &kp Z           &kp X           &kp C           &kp D           &kp V               &kp K           &kp M           &kp COMMA       &kp DOT         &kp FSLH        &kp APOS
+    &kp Q       &kp Z           &kp X           &kp C           &kp D           &kp V               &kp K           &kp H           &kp COMMA       &kp DOT         &kp FSLH        &kp APOS
                                                 &lt MSE ESC     &lt LWR SPACE   &lt RSE TAB         &lt LWR RET     &lt RSE BSPC    &lt MSE DEL
                         >;
                 };
@@ -116,7 +116,7 @@ display-name = "game"                      ;
 
                 &kp Q           &kp W           &kp F           &kp P           &kp B               &kp J           &kp L           &kp U           &kp Y           &kp APOS
                 &kp A           &kp R           &kp S           &kp T           &kp G               &kp M           &kp N           &kp E           &kp I           &kp O
-    &kp Q       &kp Z           &kp X           &kp C           &kp D           &kp V               &kp K           &kp M           &kp COMMA       &kp DOT         &kp FSLH        &kp APOS
+    &kp Q       &kp Z           &kp X           &kp C           &kp D           &kp V               &kp K           &kp H           &kp COMMA       &kp DOT         &kp FSLH        &kp APOS
                                                 &mt LCTRL ESC   &mt LALT SPACE  &mt LSHFT SPACE     &mt LSHFT RET   &mt LALT BSPC   &mt LCTRL DEL
                         >;
                 };
