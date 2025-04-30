@@ -24,6 +24,18 @@
 #define LMEH (MOD_LCTL | MOD_LSFT | MOD_LALT)
 #define RMEH (MOD_RCTL | MOD_RSFT | MOD_RALT)
 
+&lt { tapping-term-ms = <175>; };
+
+&mt {
+    tapping-term-ms = <175>;
+    flavor = "tap-preferred";
+};
+
+&mmv {
+    time-to-max-speed-ms = <680>;
+    acceleration-exponent = <2>;
+};
+
 / {
     combos {
         compatible = "zmk,combos";
@@ -52,6 +64,48 @@
             quick-tap-ms = <0>;
             flavor = "tap-preferred";
         };
+
+        td: tapdance {
+            compatible = "zmk,behavior-hold-tap";
+            label = "TAPDANCE";
+            bindings = <&kp>, <&kp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <150>;
+            quick-tap-ms = <0>;
+            flavor = "tap-preferred";
+        };
+
+        hrm: homerow_mod {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HOMEROW_MOD";
+            bindings = <&kp>, <&kp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <175>;
+            quick-tap-ms = <0>;
+            flavor = "tap-preferred";
+        };
+
+        sft_del: shift_delete {
+            compatible = "zmk,behavior-mod-morph";
+            label = "SHIFT_DELETE";
+            bindings = <&kp BSPC>, <&kp DEL>;
+
+            #binding-cells = <0>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        lsd: layer_shift_delete {
+            compatible = "zmk,behavior-hold-tap";
+            label = "LAYER_SHIFT_DELETE";
+            bindings = <&to>, <&sft_del>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <175>;
+            quick-tap-ms = <0>;
+            flavor = "tap-preferred";
+        };
     };
 
     keymap {
@@ -76,10 +130,10 @@
             //                                             ┗━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━┛   ┗━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━┛
 
             bindings = <
-       &kp Q       &kp W       &kp F        &kp P          &kp B                 &kp J               &kp L         &kp U        &kp Y       &kp APOS
-       &mt LGUI A  &mt LALT R  &mt LCTRL S  &mt LSHFT T    &mt LS(LC(LALT)) G    &mt RC(RS(RALT)) M  &mt RSHFT N   &mt RCTRL E  &mt RALT I  &mt RGUI O
-&kp Q  &kp Z       &kp X       &kp C        &kp D          &kp V                 &kp K               &kp H         &kp COMMA    &kp DOT     &kp FSLH    &kp APOS
-                               &lt MSE ESC  &lt LWR SPACE  &lt RSE TAB           &lt LWR RET         &lt RSE BSPC  &lt MSE DEL
+       &kp Q        &kp W        &kp F         &kp P          &kp B                  &kp J                &kp L         &kp U            &kp Y         &td GRAVE APOS
+       &hrm LGUI A  &hrm LALT R  &hrm LCTRL S  &hrm LSHFT T   &hrm LS(LC(LALT)) G    &hrm RC(RS(RALT)) M  &hrm RSHFT N  &hrm RCTRL E     &hrm RALT I   &hrm RGUI O
+&kp Q  &kp Z        &kp X        &kp C         &kp D          &kp V                  &kp K                &kp H         &td MINUS COMMA  &td EXCL DOT  &td UNDER FSLH  &td GRAVE APOS
+                                 &lt MSE ESC   &lt LWR SPACE  &lt RSE TAB            &lt LWR RET          &lsd RSE 0    &lt MSE LA(TAB)
             >;
         };
 
@@ -102,9 +156,9 @@
             //                                             ┗━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━┛   ┗━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━┛
 
             bindings = <
-       &kp Q  &kp W  &kp F          &kp P           &kp B              &kp J          &kp L          &kp U          &kp Y    &kp APOS
-       &kp A  &kp R  &kp S          &kp T           &kp G              &kp M          &kp N          &kp E          &kp I    &kp O
-&kp Q  &kp Z  &kp X  &kp C          &kp D           &kp V              &kp K          &kp H          &kp COMMA      &kp DOT  &kp FSLH  &kp APOS
+       &kp Q  &kp W  &kp F          &kp P           &kp B              &kp J          &kp L          &kp U            &kp Y         &td GRAVE APOS
+       &kp A  &kp R  &kp S          &kp T           &kp G              &kp M          &kp N          &kp E            &kp I         &kp O
+&kp Q  &kp Z  &kp X  &kp C          &kp D           &kp V              &kp K          &kp H          &td MINUS COMMA  &td EXCL DOT  &td UNDER FSLH  &td GRAVE APOS
                      &mt LCTRL ESC  &mt LALT SPACE  &mt LSHFT SPACE    &mt LSHFT RET  &mt LALT BSPC  &mt LCTRL DEL
             >;
         };
@@ -128,10 +182,10 @@
             //                                             ┗━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━┛   ┗━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━┛
 
             bindings = <
-          &kp LBRC        &kp AMPS       &kp STAR         &kp GRAVE        &kp RBRC                     &kp HOME        &kp PG_DN      &kp PG_UP     &kp END    &kp INS
-          &mt LGUI COLON  &mt LALT DLLR  &mt LCTRL PRCNT  &mt LSHFT CARET  &mt LS(LC(LEFT_ALT)) PLUS    &kp LEFT        &kp DOWN       &kp UP        &kp RIGHT  &cwt CAPS 0
-&kp LBRC  &kp TILDE       &kp EXCL       &kp AT           &kp HASH         &kp PIPE                     &kp RC(RS(Z))   &kp RC(V)      &kp RC(C)     &kp RC(X)  &kp RC(Z)    &kp INS
-                                         &kp LPAR         &lt LWR RPAR     &kp UNDER                    &lt LWR LG(UP)  &kp LG(SPACE)  &kp LG(DOWN)
+          &kp LBRC         &kp AMPS        &kp STAR          &kp GRAVE         &kp RBRC                      &kp HOME             &kp PG_DN      &kp PG_UP    &kp END    &kp INS
+          &hrm LGUI COLON  &hrm LALT DLLR  &hrm LCTRL PRCNT  &hrm LSHFT CARET  &hrm LS(LC(LEFT_ALT)) PLUS    &kp LEFT             &kp DOWN       &kp UP       &kp RIGHT  &cwt CAPS 0
+&kp LBRC  &kp TILDE        &kp EXCL        &kp AT            &kp HASH          &kp PIPE                      &kp RC(RS(Z))        &kp RC(V)      &kp RC(C)    &kp RC(X)  &kp RC(Z)    &kp INS
+                                           &kp LPAR          &lt LWR RPAR      &kp UNDER                     &lt LWR LS(LA(TAB))  &kp LG(SPACE)  &kp LA(TAB)
             >;
         };
 
@@ -154,10 +208,10 @@
             //                                             ┗━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━┛   ┗━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━┛
 
             bindings = <
-          &kp LBKT       &kp N7       &kp N8        &kp N9        &kp RBKT                  &kp F15               &kp F7             &kp F8         &kp F9       &kp F12
-          &mt LGUI SEMI  &mt LALT N4  &mt LCTRL N5  &mt LSHFT N6  &mt LS(LC(LALT)) EQUAL    &mt LS(LC(LALT)) F14  &mt LSHFT F4       &mt LCTRL F5   &mt LALT F6  &mt LGUI F11
-&kp LBKT  &kp GRAVE      &kp N1       &kp N2        &kp N3        &kp BSLH                  &kp F13               &kp F1             &kp F2         &kp F3       &kp F10       &kp F12
-                                      &kp DOT       &kp N0        &lt RSE MINUS             &kp PSCRN             &lt RSE LC(PSCRN)  &kp LG(PSCRN)
+          &kp LBKT        &kp N7        &kp N8         &kp N9         &kp RBKT                   &kp F15                      &kp F7                &kp F8         &kp F9        &kp F12
+          &hrm LGUI SEMI  &hrm LALT N4  &hrm LCTRL N5  &hrm LSHFT N6  &hrm LS(LC(LALT)) EQUAL    &hrm LS(LC(LALT)) LC(PSCRN)  &hrm LSHFT F4         &hrm LCTRL F5  &hrm LALT F6  &hrm LGUI F11
+&kp LBKT  &kp GRAVE       &kp N1        &kp N2         &kp N3         &kp BSLH                   &kp F13                      &kp F1                &kp F2         &kp F3        &kp F10        &kp F12
+                                        &kp DOT        &kp N0         &lt RSE MINUS              &kp LG(LEFT)                 &lt RSE LG(UP_ARROW)  &kp LG(RIGHT)
             >;
         };
 
