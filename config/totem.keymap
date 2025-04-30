@@ -99,7 +99,7 @@
         lsd: layer_shift_delete {
             compatible = "zmk,behavior-hold-tap";
             label = "LAYER_SHIFT_DELETE";
-            bindings = <&to>, <&sft_del>;
+            bindings = <&mo>, <&sft_del>;
 
             #binding-cells = <2>;
             tapping-term-ms = <175>;
