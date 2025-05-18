@@ -51,6 +51,21 @@
             key-positions = <2 3>;
             layers = <0>;
         };
+
+        bt_prv {
+            bindings = <&bt BT_PRV>;
+            key-positions = <5 6>;
+        };
+
+        bt_nxt {
+            bindings = <&bt BT_NXT>;
+            key-positions = <6 7>;
+        };
+
+        bt_clr {
+            bindings = <&bt BT_CLR>;
+            key-positions = <5 6 7>;
+        };
     };
 
     behaviors {
@@ -130,10 +145,10 @@
             //                                             ┗━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━┛   ┗━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━┛
 
             bindings = <
-       &kp Q        &kp W        &kp F         &kp P          &kp B                  &kp J                &kp L         &kp U            &kp Y         &td GRAVE APOS
-       &hrm LGUI A  &hrm LALT R  &hrm LCTRL S  &hrm LSHFT T   &hrm LS(LC(LALT)) G    &hrm RC(RS(RALT)) M  &hrm RSHFT N  &hrm RCTRL E     &hrm RALT I   &hrm RGUI O
-&kp Q  &kp Z        &kp X        &kp C         &kp D          &kp V                  &kp K                &kp H         &td MINUS COMMA  &td EXCL DOT  &td UNDER FSLH  &td GRAVE APOS
-                                 &lt MSE ESC   &lt LWR SPACE  &lt RSE TAB            &lt LWR RET          &lsd RSE 0    &lt MSE LA(TAB)
+       &kp Q  &kp W        &lt 2 F  &kp P            &kp B            &kp J          &kp L           &lt 2 U          &kp Y         &td GRAVE APOS
+       &kp A  &hrm LALT R  &lt 3 S  &hrm LGUI T      &kp G            &kp M          &hrm LGUI N     &lt 3 E          &hrm LALT I   &kp O
+&kp Q  &kp Z  &kp X        &kp C    &kp D            &kp V            &kp K          &kp H           &td MINUS COMMA  &td EXCL DOT  &td UNDER FSLH  &td GRAVE APOS
+                           &kp ESC  &mt LCTRL SPACE  &mt LSHFT TAB    &mt LSHFT RET  &mt LCTRL BSPC  &kp DEL
             >;
         };
 
