@@ -208,7 +208,7 @@
         };
 
         htde: dot_excl_hold_tap {
-            display-name = "Period-Exclamation Mark (Hold-Tap)"
+            display-name = "Period-Exclamation Mark (Hold-Tap)";
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             bindings = <&kp>, <&dot_excl>;
@@ -219,7 +219,7 @@
         };
 
         htcq: cmma_qmark_hold_tap {
-            display-name = "Comma-Question Mark (Hold-Tap)"
+            display-name = "Comma-Question Mark (Hold-Tap)";
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             bindings = <&kp>, <&cmma_qmark>;
@@ -230,7 +230,7 @@
         };
 
         htft: fslh_tild_hold_tap {
-            display-name = "Forward Slash-Tilde (Hold-Tap)"
+            display-name = "Forward Slash-Tilde (Hold-Tap)";
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             bindings = <&kp>, <&fslh_tild>;
