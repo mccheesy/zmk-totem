@@ -64,7 +64,7 @@
         };
 
         // Quick hold tap, i.e. for auto-shift
-        qht: quick_hold_tap {
+        ht: hold_tap {
             display-name = "Hold Tap (Quick)";
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
@@ -80,8 +80,6 @@
             compatible = "zmk,behavior-tri-state";
             #binding-cells = <0>;
             bindings = <&kt LALT>, <&kp TAB>, <&kt LALT>;
-
-            ignored-key-positions = <0 10 11 12 13 16 17 18 19 32 33 34 35 36 37>;
         };
 
         ctab: ctrl_tab {
@@ -89,8 +87,6 @@
             compatible = "zmk,behavior-tri-state";
             #binding-cells = <0>;
             bindings = <&kt LCTL>, <&kp TAB>, <&kt LCTL>;
-
-            ignored-key-positions = <0 10 11 12 13 16 17 18 19 32 33 34 35 36 37>;
         };
 
         gtab: gui_tab {
@@ -98,8 +94,6 @@
             compatible = "zmk,behavior-tri-state";
             #binding-cells = <0>;
             bindings = <&kt LGUI>, <&kp TAB>, <&kt LGUI>;
-
-            ignored-key-positions = <0 10 11 12 13 16 17 18 19 32 33 34 35 36 37>;
         };
 
         // Unmodded: Left Shift | With Shift: Caps Word.
@@ -404,10 +398,10 @@
             #binding-cells = <0>;
             bindings
                 = <&macro_press>
-                , <&atab_ht LA(TAB)>
+                , <&htat 0 LA(TAB)>
                 , <&macro_pause_for_release>
                 , <&macro_release>
-                , <&atab_ht LA(TAB)>
+                , <&htat 0 LA(TAB)>
                 ;
         };
 
@@ -465,10 +459,14 @@
             #binding-cells = <1>;
             bindings
                 = <&macro_press>
-                , <&macro_param_1to1 &macro_param_1to2 &qht LS(MACRO_PLACEHOLDER) MACRO_PLACEHOLDER>
+                , <&macro_param_1to1>
+                , <&macro_param_1to2>
+                , <&ht LS(MACRO_PLACEHOLDER) MACRO_PLACEHOLDER>
                 , <&macro_pause_for_release>
                 , <&macro_release>
-                , <&macro_param_1to1 &macro_param_1to2 &qht LS(MACRO_PLACEHOLDER) MACRO_PLACEHOLDER>
+                , <&macro_param_1to1>
+                , <&macro_param_1to2>
+                , <&ht LS(MACRO_PLACEHOLDER) MACRO_PLACEHOLDER>
                 ;
         };
 
@@ -504,21 +502,39 @@
             display-name = "Period-Exclamation Mark (Autoshift)";
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&htde EXCL 0>;
+            bindings
+                = <&macro_press>
+                , <&htde EXCL 0>
+                , <&macro_pause_for_release>
+                , <&macro_release>
+                , <&htde EXCL 0>
+                ;
         };
 
         ascq: autoshift_cmma_qmark {
             display-name = "Comma-Question Mark (Autoshift)";
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&htcq QMARK 0>;
+            bindings
+                = <&macro_press>
+                , <&htcq QMARK 0>
+                , <&macro_pause_for_release>
+                , <&macro_release>
+                , <&htcq QMARK 0>
+                ;
         };
 
         asft: autoshift_fslh_tild {
             display-name = "Forward Slash-Tilde (Autoshift)";
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&htft EXCL 0>;
+            bindings
+                = <&macro_press>
+                , <&htft TILD 0>
+                , <&macro_pause_for_release>
+                , <&macro_release>
+                , <&htft TILD 0>
+                ;
         };
     };
 
@@ -608,30 +624,30 @@
             //                         ┗━━━━━━━┻━━━━━━━┻━━━━━━━┛ ┗━━━━━━━┻━━━━━━━┻━━━━━━━┛
 
             bindings = <
-          &kp Q            &kp W       &lt 3 F            &kp P            &kp B         &kp J         &kp L           &lt 3 U  &kp Y       &as SQT
-          &hm LC(LSHFT) A  &hm LALT R  &lt 2 S            &hm LGUI T       &kp G         &kp M         &hm LGUI N      &lt 2 E  &hm LALT I  &hm LC(LSHFT) O
-&swapper  &kp Z            &kp X       &kp C              &kp D            &kp V         &kp K         &kp H           &ascq    &asde       &asft            &swapper
-                                       &mt LC(LSHFT) ESC  &mt LCTRL SPACE  &msl_t 0 TAB  &msr_t 0 RET  &mt LCTRL BSPC  &mt LC(LSHIFT) DEL
+          &kp Q            &kp W       &lt 3 F  &kp P            &kp B         &kp J         &kp L           &lt 3 U  &kp Y       &as SQT
+          &hm LC(LSHFT) A  &hm LALT R  &lt 2 S  &hm LGUI T       &kp G         &kp M         &hm LGUI N      &lt 2 E  &hm LALT I  &hm LC(LSHFT) O
+&swapper  &kp Z            &kp X       &kp C    &kp D            &kp V         &kp K         &kp H           &ascq    &asde       &asft            &swapper
+                                       &kp ESC  &mt LCTRL SPACE  &msl_t 0 TAB  &msr_t 0 RET  &mt LCTRL BSPC  &kp DEL
             >;
         };
 
         game {
             display-name = "game";
 
-            //               ┏━━━━━━━━━━━━━┳━━━━━━━━━━━━━┳━━━━━━━━━━━━━┳━━━━━━━━━━━━━┳━━━━━━━━━━━━━┓
-            //               ┃      Q      ┃      W      ┃      F      ┃      P      ┃      B      ┃
-            //               ┣━━━━━━━━━━━━━╋━━━━━━━━━━━━━╋━━━━━━━━━━━━━╋━━━━━━━━━━━━━╋━━━━━━━━━━━━━┫
-            //               ┃      A      ┃      R      ┃      S      ┃      T      ┃      G      ┃
-            // ┏━━━━━━━━━━━━━╋━━━━━━━━━━━━━╋━━━━━━━━━━━━━╋━━━━━━━━━━━━━╋━━━━━━━━━━━━━╋━━━━━━━━━━━━━┫
-            // ┃   ALT TAB   ┃      Z      ┃      X      ┃      C      ┃      D      ┃      V      ┃
-            // ┗━━━━━━━━━━━━━┻━━━━━━━━━━━━━┻━━━━━━━━━━━━━╋━━━━━━━━━━━━━╋━━━━━━━━━━━━━╋━━━━━━━━━━━━━┫
-            //                                           ┃     ESC     ┃     SPC     ┃     TAB     ┃
-            //                                           ┗━━━━━━━━━━━━━┻━━━━━━━━━━━━━┻━━━━━━━━━━━━━┛
+            //         ┏━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━┓
+            //         ┃   Q   ┃   W   ┃   F   ┃   P   ┃   B   ┃
+            //         ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫
+            //         ┃   A   ┃   R   ┃   S   ┃   T   ┃   G   ┃
+            // ┏━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫
+            // ┃  num  ┃   Z   ┃   X   ┃   C   ┃   D   ┃   V   ┃
+            // ┗━━━━━━━┻━━━━━━━┻━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫
+            //                         ┃  ESC  ┃  SPC  ┃  TAB  ┃
+            //                         ┗━━━━━━━┻━━━━━━━┻━━━━━━━┛
 
             bindings = <
        &kp Q  &kp W  &kp F         &kp P            &kp B          &none  &none  &none  &none  &none
        &kp A  &kp R  &kp S         &kp T            &kp G          &none  &none  &none  &none  &none
-&mo 2  &kp Z  &kp X  &kp C         &kp D            &kp V          &none  &none  &none  &none  &none  &none
+&sl 2  &kp Z  &kp X  &kp C         &kp D            &kp V          &none  &none  &none  &none  &none  &none
                      &mt LALT ESC  &mt LCTRL SPACE  &mt LSHFT TAB  &none  &none  &none
             >;
         };
@@ -650,10 +666,10 @@
             //                         ┗━━━━━━━┻━━━━━━━┻━━━━━━━┛ ┗━━━━━━━┻━━━━━━━┻━━━━━━━┛
 
             bindings = <
-        &kp LBKT  &kp N7       &kp N8         &kp N9         &kp RBKT         &kp LBRC        &kp AMPS        &kp HASH     &kp AT         &kp RBRC
-        &kp PLUS  &hm LALT N4  &lt 2 N5       &hm LGUI N6    &kp EQUAL        &kp CARET       &hm LGUI UNDER  &lt 2 GRAVE  &hm LALT DLLR  &kp COLON 
-&trans  &kp STAR  &kp N1       &kp N2         &kp N3         &kp BSLH         &kp PIPE        &kp PRCNT       &kp LT       &kp GT         &kp SEMI   &trans
-                               &mt LALT PLUS  &mt LCTRL N0   &mt LSHFT MINUS  &mt LSHFT LPAR  &mt LCTRL RPAR  &mt LALT GRAVE 
+        &kp LBKT            &kp N7       &kp N8    &kp N9         &kp RBKT         &kp LBRC        &kp AMPS        &kp HASH     &kp AT         &kp RBRC
+        &hm LC(LSHFT) PLUS  &hm LALT N4  &lt 2 N5  &hm LGUI N6    &kp EQUAL        &kp CARET       &hm LGUI UNDER  &lt 2 GRAVE  &hm LALT DLLR  &hm LC(LSHFT) COLON 
+&trans  &kp STAR            &kp N1       &kp N2    &kp N3         &kp BSLH         &kp PIPE        &kp PRCNT       &kp LT       &kp GT         &kp SEMI   &trans
+                                         &kp N5    &mt LCTRL N0   &mt LSHFT MINUS  &mt LSHFT LPAR  &mt LCTRL RPAR  &kp GRAVE 
             >;
         };
 
@@ -663,18 +679,18 @@
             //         ┏━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━┓ ┏━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━┓
             //         ┃  ^-Q  ┃  ^-W  ┃  ^-F  ┃  ^-P  ┃  ^-B  ┃ ┃ HOME  ┃ PG DN ┃ PG UP ┃  END  ┃ mouse ┃
             //         ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫ ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫
-            //         ┃  ^-A  ┃  ^-R  ┃  ^-S  ┃  ^-T  ┃  ^-G  ┃ ┃ LEFT  ┃ DOWN  ┃  UP   ┃ RIGHT ┃       ┃
-            // ┏━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫ ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━┓
-            // ┃       ┃  ^-Z  ┃  ^-X  ┃  ^-C  ┃  ^-V  ┃ ^-⇧-Z ┃ ┃       ┃ PSCRN ┃       ┃       ┃       ┃      ┃
-            // ┗━━━━━━━┻━━━━━━━┻━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫ ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┻━━━━━━━┻━━━━━━┛
+            //         ┃  ^-A  ┃  ^-R  ┃  ^-S  ┃  ^-T  ┃  ^-G  ┃ ┃ LEFT  ┃ DOWN  ┃  UP   ┃ RIGHT ┃ PSCRN ┃
+            // ┏━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫ ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┓
+            // ┃       ┃  ^-Z  ┃  ^-X  ┃  ^-C  ┃  ^-V  ┃ ^-⇧-Z ┃ ┃  ^-K  ┃  ^-H  ┃  ^-,  ┃  ^-.  ┃  ^-/  ┃       ┃
+            // ┗━━━━━━━┻━━━━━━━┻━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫ ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┻━━━━━━━┻━━━━━━━┛
             //                         ┃       ┃       ┃       ┃ ┃       ┃       ┃       ┃
             //                         ┗━━━━━━━┻━━━━━━━┻━━━━━━━┛ ┗━━━━━━━┻━━━━━━━┻━━━━━━━┛
 
             bindings = <
-        &kp LC(Q)  &kp LC(W)       &lt 3 LC(F)  &kp LC(P)       &kp LC(B)  &kp HOME  &kp PG_DN  &lt 3 PG_UP  &kp END    &to 4
-        &kp LC(A)  &hm LALT LC(R)  &kp LC(S)    &hm LGUI LC(T)  &kp LC(G)  &kp LEFT  &kp DOWN   &kp UP       &kp RIGHT  &none
-&trans  &undo      &cut            &copy        &paste          &redo      &none     &kp PSCRN  &none        &none      &none  &none
-                                   &trans       &trans          &trans     &trans    &trans     &trans
+        &kp LC(Q)  &kp LC(W)       &lt 3 LC(F)  &kp LC(P)       &kp LC(B)  &kp HOME   &kp PG_DN  &lt 3 PG_UP   &kp END      &to 4
+        &kp LC(A)  &hm LALT LC(R)  &kp LC(S)    &hm LGUI LC(T)  &kp LC(G)  &kp LEFT   &kp DOWN   &kp UP        &kp RIGHT    &kp PSCRN
+&trans  &undo      &cut            &copy        &paste          &redo      &kp LC(K)  &kp LC(H)  &kp LC(CMMA)  &kp LC(DOT)  &kp LC(FSLH)  &none
+                                   &trans       &trans          &trans     &trans     &trans     &trans
             >;
         };
 
@@ -690,21 +706,10 @@
             // ┗━━━━━━━┻━━━━━━━┻━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫ ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┻━━━━━━━┻━━━━━━┛
             //                         ┃       ┃       ┃       ┃ ┃  MB2  ┃  MB1  ┃  MB3  ┃
             //                         ┗━━━━━━━┻━━━━━━━┻━━━━━━━┛ ┗━━━━━━━┻━━━━━━━┻━━━━━━━┛
-            // ┏━━━━━━━━━━━━━┳━━━━━━━━━━━━━┳━━━━━━━━━━━━━┳━━━━━━━━━━━━━┳━━━━━━━━━━━━━┳━━━━━━━━━━━━━┓                             ┏━━━━━━━━━━━━━┳━━━━━━━━━━━━━┳━━━━━━━━━━━━━┳━━━━━━━━━━━━━┳━━━━━━━━━━━━━┳━━━━━━━━━━━━━┓
-            // ┃      (      ┃      1      ┃      2      ┃      3      ┃      4      ┃      5      ┃                             ┃      6      ┃      7      ┃      8      ┃      9      ┃      0      ┃      )      ┃
-            // ┣━━━━━━━━━━━━━┣━━━━━━━━━━━━━╋━━━━━━━━━━━━━╋━━━━━━━━━━━━━╋━━━━━━━━━━━━━╋━━━━━━━━━━━━━┫                             ┣━━━━━━━━━━━━━╋━━━━━━━━━━━━━╋━━━━━━━━━━━━━╋━━━━━━━━━━━━━╋━━━━━━━━━━━━━╋━━━━━━━━━━━━━┫
-            // ┃             ┃     ^-Q     ┃     ^-W     ┃     ^-T     ┃     ^-P     ┃     ^-B     ┃                             ┃  SCRL LEFT  ┃  SCRL DOWN  ┃   SCRL UP   ┃  SCRL RIGHT ┃    base     ┃             ┃
-            // ┣━━━━━━━━━━━━━┣━━━━━━━━━━━━━╋━━━━━━━━━━━━━╋━━━━━━━━━━━━━╋━━━━━━━━━━━━━╋━━━━━━━━━━━━━┫                             ┣━━━━━━━━━━━━━╋━━━━━━━━━━━━━╋━━━━━━━━━━━━━╋━━━━━━━━━━━━━╋━━━━━━━━━━━━━╋━━━━━━━━━━━━━┫
-            // ┃             ┃     GUI     ┃     ALT     ┃     CTL     ┃    SHFT     ┃    ^-⇧-G    ┃                             ┃  MOVE LEFT  ┃  MOVE DOWN  ┃   SCRL UP   ┃  MOVE RIGHT ┃             ┃             ┃
-            // ╋━━━━━━━━━━━━━╋━━━━━━━━━━━━━╋━━━━━━━━━━━━━╋━━━━━━━━━━━━━╋━━━━━━━━━━━━━╋━━━━━━━━━━━━━╋━━━━━━━━━━━━━┓ ┏━━━━━━━━━━━━━╋━━━━━━━━━━━━━╋━━━━━━━━━━━━━╋━━━━━━━━━━━━━╋━━━━━━━━━━━━━╋━━━━━━━━━━━━━╋━━━━━━━━━━━━━┫
-            // ┃             ┃    UNDO     ┃     CUT     ┃    COPY     ┃    PASTE    ┃    REDO     ┃   ALT TAB   ┃ ┃  LAUNCHER   ┃    REDO     ┃    PASTE    ┃    COPY     ┃     CUT     ┃    UNDO     ┃            ┃
-            // ┗━━━━━━━━━━━━━┻━━━━━━━━━━━━━┻━━━━━━━━━━━━━╋━━━━━━━━━━━━━╋━━━━━━━━━━━━━╋━━━━━━━━━━━━━╋━━━━━━━━━━━━━┫ ┣━━━━━━━━━━━━━╋━━━━━━━━━━━━━╋━━━━━━━━━━━━━╋━━━━━━━━━━━━━╋━━━━━━━━━━━━━┻━━━━━━━━━━━━━┻━━━━━━━━━━━━━┛
-            //                                           ┃     MB5     ┃     MB4     ┃     MB1     ┃     MB2     ┃ ┃     MB2     ┃     MB1     ┃     MB4     ┃     MB5     ┃
-            //                                           ┗━━━━━━━━━━━━━┻━━━━━━━━━━━━━┻━━━━━━━━━━━━━┻━━━━━━━━━━━━━┛ ┗━━━━━━━━━━━━━┻━━━━━━━━━━━━━┻━━━━━━━━━━━━━┻━━━━━━━━━━━━━┛
 
             bindings = <
         &kp F12  &kp F7       &kp F8  &kp F9       &kp F15  &msc SCRL_LEFT  &msc SCRL_DOWN  &msc SCRL_UP  &msc SCRL_RIGHT  &to 0
-        &kp F11  &hm LALT F4  &kp F5  &hm LGUI F6  &kp F14  &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_UP  &mmv SCRL_RIGHT  &none
+        &kp F11  &hm LALT F4  &kp F5  &hm LGUI F6  &kp F14  &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_UP  &mmv MOVE_RIGHT  &none
 &trans  &kp F10  &kp F1       &kp F2  &kp F3       &kp F13  &none           &mkp MB4        &mkp MB5      &none            &none       &trans
                               &trans  &trans       &trans   &mkp MB2        &mkp MB1        &mkp MB3
             >;
