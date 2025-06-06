@@ -51,18 +51,6 @@
             flavor = "tap-preferred";
         };
 
-        ls: layer_sticky_tap {
-            display-name = "Layer-Sticky Tap";
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
-            bindings = <&lt>, <&sk>;
-
-            tapping-term-ms = <280>;
-            quick-tap-ms = <150>;
-            require-prior-idle-ms = <150>;
-            hold-trigger-on-release;
-        };
-
         // Quick hold tap, i.e. for auto-shift
 
         ht: hold_tap {
@@ -76,97 +64,10 @@
             flavor = "tap-preferred";
         };
 
-        atab: alt_tab {
-            display-name = "Alt-Tab";
-            compatible = "zmk,behavior-tri-state";
-            #binding-cells = <0>;
-            bindings = <&kt LALT>, <&kp TAB>, <&kt LALT>;
-        };
-
-        ctab: ctrl_tab {
-            display-name = "Ctrl-Tab";
-            compatible = "zmk,behavior-tri-state";
-            #binding-cells = <0>;
-            bindings = <&kt LCTL>, <&kp TAB>, <&kt LCTL>;
-        };
-
-        gtab: gui_tab {
-            display-name = "Ctrl-Tab";
-            compatible = "zmk,behavior-tri-state";
-            #binding-cells = <0>;
-            bindings = <&kt LGUI>, <&kp TAB>, <&kt LGUI>;
-        };
-
         // Unmodded: Left Shift | With Shift: Caps Word.
-
-        ms_l: magic_left_shift {
-            display-name = "Magic Shift";
-            compatible = "zmk,behavior-mod-morph";
-            #binding-cells = <0>;
-            bindings = <&sk LSHFT>, <&caps_word>;
-
-            mods = <(MOD_LSFT|MOD_RSFT)>;
-        };
-
         // Unmodded: Right Shift | With Shift: Caps Word.
-
-        ms_r: magic_right_shift {
-            display-name = "Magic Shift";
-            compatible = "zmk,behavior-mod-morph";
-            #binding-cells = <0>;
-            bindings = <&sk RSHFT>, <&caps_word>;
-
-            mods = <(MOD_LSFT|MOD_RSFT)>;
-        };
-
         // Hold: &ms_l | Tap: &kp
-
-        msl_t: magic_left_shift_tap {
-            display-name = "Magic Shift-Tap";
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
-            bindings = <&ms_l>, <&kp>;
-
-            tapping-term-ms = <280>;
-            quick-tap-ms = <150>;
-            require-prior-idle-ms = <150>;
-            hold-trigger-on-release;
-        };
-
         // Hold: &ms_r | Tap: &kp
-
-        msr_t: magic_right_shift_tap {
-            display-name = "Magic Shift-Tap (Right)";
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
-            bindings = <&ms_r>, <&kp>;
-
-            tapping-term-ms = <280>;
-            quick-tap-ms = <150>;
-            require-prior-idle-ms = <150>;
-            hold-trigger-on-release;
-        };
-
-        hold_cw: hold_caps_word {
-            display-name = "Hold Caps Word";
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
-            bindings = <&kp>, <&sh_cw>;
-
-            tapping-term-ms = <280>;
-            quick-tap-ms = <150>;
-            require-prior-idle-ms = <150>;
-            hold-trigger-on-release;
-        };
-
-        sh_cw: hold_shift_tap_caps_word {
-            display-name = "Hold Shift, Tap Caps Word";
-            compatible = "zmk,behavior-tap-dance";
-            #binding-cells = <0>;
-            bindings = <&kp LSHFT>, <&caps_word>;
-
-            tapping-term-ms = <150>;
-        };
 
         dot_excl: dot_excl {
             display-name = "Period-Exclamation Mark";
@@ -193,17 +94,6 @@
             bindings = <&kp FSLH>, <&kp TILDE>;
 
             mods = <(MOD_LSFT|MOD_RSFT)>;
-        };
-
-        htat: alt_tab_hold_tap {
-            display-name = "Alt-Tab (Hold-Tap)";
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
-            bindings = <&atab>, <&kp>;
-
-            tapping-term-ms = <250>;
-            quick-tap-ms = <250>;
-            flavor = "balanced";
         };
 
         htde: dot_excl_hold_tap {
@@ -238,247 +128,9 @@
             quick-tap-ms = <0>;
             flavor = "tap-preferred";
         };
-
-        alt_f1: alt_f1 {
-            display-name = "N1-F1";
-            compatible = "zmk,behavior-mod-morph";
-            #binding-cells = <0>;
-            bindings = <&kp N1>, <&kp F1>;
-
-            mods = <(MOD_LALT|MOD_RALT)>;
-        };
-
-        alt_f2: alt_f2 {
-            display-name = "N2-F2";
-            compatible = "zmk,behavior-mod-morph";
-            #binding-cells = <0>;
-            bindings = <&kp N2>, <&kp F2>;
-
-            mods = <(MOD_LALT|MOD_RALT)>;
-        };
-
-        alt_f3: alt_f3 {
-            display-name = "N3-F3";
-            compatible = "zmk,behavior-mod-morph";
-            #binding-cells = <0>;
-            bindings = <&kp N3>, <&kp F3>;
-
-            mods = <(MOD_LALT|MOD_RALT)>;
-        };
-
-        alt_f4: alt_f4 {
-            display-name = "N4-F4";
-            compatible = "zmk,behavior-mod-morph";
-            #binding-cells = <0>;
-            bindings = <&kp N4>, <&kp F4>;
-
-            mods = <(MOD_LALT|MOD_RALT)>;
-        };
-
-        alt_f5: alt_f5 {
-            display-name = "N5-F5";
-            compatible = "zmk,behavior-mod-morph";
-            #binding-cells = <0>;
-            bindings = <&kp N5>, <&kp F5>;
-
-            mods = <(MOD_LALT|MOD_RALT)>;
-        };
-
-        alt_f6: alt_f6 {
-            display-name = "N6-F6";
-            compatible = "zmk,behavior-mod-morph";
-            #binding-cells = <0>;
-            bindings = <&kp N6>, <&kp F6>;
-
-            mods = <(MOD_LALT|MOD_RALT)>;
-        };
-
-        alt_f7: alt_f7 {
-            display-name = "N7-F7";
-            compatible = "zmk,behavior-mod-morph";
-            #binding-cells = <0>;
-            bindings = <&kp N7>, <&kp F7>;
-
-            mods = <(MOD_LALT|MOD_RALT)>;
-        };
-
-        alt_f8: alt_f8 {
-            display-name = "N8-F8";
-            compatible = "zmk,behavior-mod-morph";
-            #binding-cells = <0>;
-            bindings = <&kp N8>, <&kp F8>;
-
-            mods = <(MOD_LALT|MOD_RALT)>;
-        };
-
-        alt_f9: alt_f9 {
-            display-name = "N9-F9";
-            compatible = "zmk,behavior-mod-morph";
-            #binding-cells = <0>;
-            bindings = <&kp N9>, <&kp F9>;
-
-            mods = <(MOD_LALT|MOD_RALT)>;
-        };
-
-        alt_f10: alt_f10 {
-            display-name = "N10-F10";
-            compatible = "zmk,behavior-mod-morph";
-            #binding-cells = <0>;
-            bindings = <&kp N0>, <&kp F10>;
-
-            mods = <(MOD_LALT|MOD_RALT)>;
-        };
-
-        alt_f11: alt_f11 {
-            display-name = "N11-F11";
-            compatible = "zmk,behavior-mod-morph";
-            #binding-cells = <0>;
-            bindings = <&kp MINUS>, <&kp F11>;
-
-            mods = <(MOD_LALT|MOD_RALT)>;
-        };
-
-        alt_f12: alt_f12 {
-            display-name = "N12-F12";
-            compatible = "zmk,behavior-mod-morph";
-            #binding-cells = <0>;
-            bindings = <&kp EQUAL>, <&kp F12>;
-
-            mods = <(MOD_LALT|MOD_RALT)>;
-        };
-
-        lpar_lt: lpar_lt {
-            compatible = "zmk,behavior-mod-morph";
-            label = "LPAR_LT";
-            bindings = <&kp LPAR>, <&kp LT>;
-
-            #binding-cells = <0>;
-            mods = <(MOD_RSFT|MOD_LSFT)>;
-        };
-
-        rpar_gt: rpar_gt {
-            compatible = "zmk,behavior-mod-morph";
-            label = "RPAR_GT";
-            bindings = <&kp RPAR>, <&kp GT>;
-
-            #binding-cells = <0>;
-            mods = <(MOD_LSFT|MOD_RSFT)>;
-        };
-
-        lbkt_lbrc: lbkt_lbrc {
-            compatible = "zmk,behavior-mod-morph";
-            label = "LBKT_LBRC";
-            bindings = <&kp LBKT>, <&kp LBRC>;
-
-            #binding-cells = <0>;
-            mods = <(MOD_LSFT|MOD_RSFT)>;
-        };
-
-        rbkt_rbrc: rbkt_rbrc {
-            compatible = "zmk,behavior-mod-morph";
-            label = "RBKT_RBRC";
-            bindings = <&kp RBKT>, <&kp RBRC>;
-
-            #binding-cells = <0>;
-            mods = <(MOD_LSFT|MOD_RSFT)>;
-        };
-
-        star_fslh: star_fslh {
-            compatible = "zmk,behavior-mod-morph";
-            label = "STAR_FSLH";
-            bindings = <&kp STAR>, <&kp FSLH>;
-
-            #binding-cells = <0>;
-            mods = <(MOD_LSFT|MOD_RSFT)>;
-        };
-
-        htsf: star_fslh_hold_tap {
-            compatible = "zmk,behavior-hold-tap";
-            bindings = <&kp>, <&star_fslh>;
-
-            #binding-cells = <2>;
-            tapping-term-ms = <150>;
-            flavor = "tap-preferred";
-            quick-tap-ms = <0>;
-        };
-
-        htlplt: lpar_lt_hold_tap {
-            compatible = "zmk,behavior-hold-tap";
-            bindings = <&kp>, <&lpar_lt>;
-
-            #binding-cells = <2>;
-            tapping-term-ms = <150>;
-            quick-tap-ms = <0>;
-            flavor = "tap-preferred";
-        };
-
-        htlblb: lbkt_lbrc_hold_tap {
-            compatible = "zmk,behavior-hold-tap";
-            bindings = <&kp>, <&lbkt_lbrc>;
-
-            #binding-cells = <2>;
-            tapping-term-ms = <150>;
-            quick-tap-ms = <0>;
-            flavor = "tap-preferred";
-        };
-
-        htrpgt: rpar_gt_hold_tap {
-            compatible = "zmk,behavior-hold-tap";
-            bindings = <&kp>, <&rpar_gt>;
-
-            #binding-cells = <2>;
-            tapping-term-ms = <150>;
-            quick-tap-ms = <0>;
-            flavor = "tap-preferred";
-        };
-
-        htrbrb: rbkt_rbrc_hold_tap {
-            compatible = "zmk,behavior-hold-tap";
-            bindings = <&kp>, <&rbkt_rbrc>;
-
-            #binding-cells = <2>;
-            tapping-term-ms = <150>;
-            quick-tap-ms = <0>;
-            flavor = "tap-preferred";
-        };
     };
 
     macros {
-        copy: copy {
-            display-name = "Copy";
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp LC(C)>;
-        };
-
-        cut: cut {
-            display-name = "Cut";
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp LC(X)>;
-        };
-
-        paste: paste {
-            display-name = "Paste";
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp LC(V)>;
-        };
-
-        undo: undo {
-            display-name = "Undo";
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp LC(Z)>;
-        };
-
-        redo: redo {
-            display-name = "Redo";
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp LC(LS(Z))>;
-        };
-
         launcher: launcher {
             display-name = "Launcher";
             compatible = "zmk,behavior-macro";
@@ -497,10 +149,10 @@
             #binding-cells = <0>;
             bindings =
                 <&macro_press>,
-                <&htat 0 LA(TAB)>,
+                <&kp LA(TAB)>,
                 <&macro_pause_for_release>,
                 <&macro_release>,
-                <&htat 0 LA(TAB)>;
+                <&kp LA(TAB)>;
         };
 
         /**
@@ -508,40 +160,12 @@
          * Windows/Linux: Grave-Tab
          * MacOS: Ctrl-Tab (Cmd-Tab if CMD_SWAP)
          */
-
-        swap_w: swap_win {
-            display-name = "Swap Win";
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&macro_tap>, <&to 0>, <&macro_tap>, <&gtab>;
-        };
-
         /**
          * Swap applications
          * Windows/Linux: Alt-Tab
          * MacOS: Cmd-Tab
          */
-
-        swap_a: swap_app {
-            display-name = "Swap App";
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&macro_tap>, <&to 0>, <&macro_tap>, <&ctab>;
-        };
-
         // Hold: Caps Lock; Tap: Caps Word
-
-        cw: caps_lock_caps_word {
-            display-name = "Caps Word-Hold";
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings =
-                <&macro_press>,
-                <&hold_cw CAPS 0>,
-                <&macro_pause_for_release>,
-                <&macro_release>,
-                <&hold_cw CAPS 0>;
-        };
 
         as: autoshift {
             display-name = "Autoshift";
@@ -609,69 +233,6 @@
                 <&macro_release>,
                 <&htft TILD 0>;
         };
-
-        assf: autoshift_star_fslh {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings =
-                <&macro_press>,
-                <&htsf FSLH 0>,
-                <&macro_pause_for_release>,
-                <&macro_release>,
-                <&htsf FSLH 0>;
-        };
-
-        aslp: aslp {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings =
-                <&macro_press>,
-                <&htlplt LT 0>,
-                <&macro_pause_for_release>,
-                <&macro_release>,
-                <&htlplt LT 0>;
-
-            label = "ASLP";
-        };
-
-        aslb: aslb {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings =
-                <&macro_press>,
-                <&htlblb LBRC 0>,
-                <&macro_pause_for_release>,
-                <&macro_release>,
-                <&htlblb LBRC 0>;
-
-            label = "ASLB";
-        };
-
-        asrp: asrp {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings =
-                <&macro_press>,
-                <&htrpgt GT 0>,
-                <&macro_pause_for_release>,
-                <&macro_release>,
-                <&htrpgt GT 0>;
-
-            label = "ASRP";
-        };
-
-        asrb: asrb {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings =
-                <&macro_press>,
-                <&htrbrb RBRC 0>,
-                <&macro_pause_for_release>,
-                <&macro_release>,
-                <&htrbrb RBRC 0>;
-
-            label = "ASRB";
-        };
     };
 
     combos {
@@ -704,7 +265,7 @@
 
         out {
             bindings = <&out OUT_TOG>;
-            key-positions = <31 20>;
+            key-positions = <8 9>;
         };
     };
 
@@ -725,10 +286,10 @@
             //                         ┗━━━━━━━┻━━━━━━━┻━━━━━━━┛ ┗━━━━━━━┻━━━━━━━┻━━━━━━━┛
 
             bindings = <
-          &kp Q            &kp W       &lt 3 F  &kp P            &kp B              &kp J            &kp L           &lt 3 U  &kp Y       &as SQT
-          &hm LC(LSHFT) A  &hm LALT R  &lt 2 S  &hm LGUI T       &hm LC(LSHFT) G    &hm LC(LSHFT) M  &hm LGUI N      &lt 2 E  &hm LALT I  &kp O
-&swapper  &kp Z            &kp X       &kp C    &kp D            &kp V              &kp K            &kp H           &ascq    &asde       &asft    &kp LG(SPACE)
-                                       &kp ESC  &mt LCTRL SPACE  &msl_t 0 TAB       &msr_t 0 RET     &mt LCTRL BSPC  &kp DEL
+          &kp Q                &kp W       &lt 3 F       &kp P            &kp B              &kp J            &kp L           &lt 3 U       &kp Y       &as SQT
+          &hm LC(LA(LSHFT)) A  &hm LALT R  &lt 2 S       &hm LGUI T       &hm LC(LSHFT) G    &hm RC(RSHFT) M  &hm RGUI N      &lt 2 E       &hm LALT I  &hm RC(LA(RSHFT)) O
+&swapper  &kp Z                &kp X       &kp C         &kp D            &kp V              &kp K            &kp H           &ascq         &asde       &asft                &launcher
+                                           &mt LALT ESC  &mt LCTRL SPACE  &mt LSHFT TAB      &mt RSHFT RET    &mt LCTRL BSPC  &mt LALT DEL
             >;
         };
 
@@ -746,10 +307,10 @@
             //                         ┗━━━━━━━┻━━━━━━━┻━━━━━━━┛
 
             bindings = <
-          &kp Q  &kp W  &kp E         &kp R            &lt 3 T          &kp Y          &kp U           &kp I         &kp O  &kp P
-          &kp A  &kp S  &kp D         &kp F            &kp G            &kp H          &kp J           &kp K         &kp L  &as APOS
-&swapper  &kp Z  &kp X  &kp C         &kp V            &lt 2 B          &lt 3 N        &kp M           &ascq         &asde  &asft     &kp LG(SPACE)
-                        &mt LALT ESC  &mt LCTRL SPACE  &mt LSHFT TAB    &mt LSHFT RET  &mt LCTRL BSPC  &mt LALT DEL
+          &kp Q  &kp W  &kp E         &kp R            &lt 3 T          &kp Y          &kp U           &lt 3 I       &kp O  &kp P
+          &kp A  &kp S  &kp D         &kp F            &kp G            &kp H          &kp J           &lt 2 K       &kp L  &as APOS
+&swapper  &kp Z  &kp X  &kp C         &kp V            &lt 2 B          &kp N          &kp M           &ascq         &asde  &asft     &launcher
+                        &mt LALT ESC  &mt LCTRL SPACE  &mt LSHFT TAB    &mt RSHFT RET  &mt LCTRL BSPC  &mt LALT DEL
             >;
         };
 
@@ -767,10 +328,10 @@
             //                         ┗━━━━━━━┻━━━━━━━┻━━━━━━━┛ ┗━━━━━━━┻━━━━━━━┻━━━━━━━┛
 
             bindings = <
-        &kp KP_MINUS  &kp KP_N7       &kp KP_N8       &kp KP_N9       &assf                  &kp BSLH            &aslp           &kp HASH     &asrp          &kp GRAVE
-        &kp KP_PLUS   &hm LALT KP_N4  &lt 2 KP_N5     &hm LGUI KP_N6  &hm LS(LCTRL) EQUAL    &hm LC(LSHFT) AMPS  &hm LGUI CARET  &lt 2 GRAVE  &hm LALT DLLR  &kp COLON
-&trans  &kp KP_N0     &kp KP_N1       &kp KP_N2       &kp KP_N3       &kp DOT                &kp PIPE            &aslb           &kp PERCENT  &asrb          &kp SEMI   &trans
-                                      &mt LALT KP_N5  &mt LCTRL N0    &mt LSHFT MINUS        &mt LSHFT UNDER     &sk LCTRL       &sk LALT
+        &kp LBKT                   &kp KP_N7       &kp KP_N8     &kp KP_N9           &kp RBKT                  &kp AMPS            &kp LBRC         &kp HASH       &kp RBRC       &kp AT
+        &hm LA(LC(LSHFT)) KP_PLUS  &hm LALT KP_N4  &lt 2 KP_N5   &hm LGUI KP_N6      &hm LS(LCTRL) KP_EQUAL    &hm RC(RSHFT) PIPE  &hm RGUI LPAR    &lt 2 GRAVE    &hm LALT RPAR  &hm RC(LA(RSHFT)) COLON
+&trans  &kp KP_N0                  &kp KP_N1       &kp KP_N2     &kp KP_N3           &kp KP_MULTIPLY           &kp BSLH            &kp LT           &kp PERCENT    &kp GT         &kp SEMI                 &trans
+                                                   &mt LALT DOT  &mt LCTRL KP_MINUS  &mt LSHFT KP_ENTER        &mt RSHFT CARET     &mt RCTRL UNDER  &mt LALT DLLR
             >;
         };
 
@@ -788,10 +349,10 @@
             //                         ┗━━━━━━━┻━━━━━━━┻━━━━━━━┛ ┗━━━━━━━┻━━━━━━━┻━━━━━━━┛
 
             bindings = <
-        &kp F12  &kp F7       &lt 3 F8  &kp F9        &kp F15              &kp HOME   &kp PG_DN  &lt 3 PG_UP  &kp END    &kp INS
-        &kp F11  &hm LALT F4  &kp F5    &hm LCTRL F6  &mt LC(LSHFT) F14    &kp LEFT   &kp DOWN   &kp UP       &kp RIGHT  &kp PSCRN
-&trans  &kp F10  &kp F1       &kp F2    &kp F3        &kp F13              &sk LSHFT  &sk LCTRL  &sk LALT     &sk LGUI   &none      &none
-                              &trans    &trans        &trans               &trans     &trans     &trans
+        &kp F15                &kp F7       &lt 3 F8  &kp F9        &kp F12              &kp HOME   &kp PG_DN  &lt 3 PG_UP  &kp END    &kp INS
+        &hm LC(LA(LSHFT)) F14  &hm LALT F4  &kp F5    &hm LCTRL F6  &mt LC(LSHFT) F11    &kp LEFT   &kp DOWN   &kp UP       &kp RIGHT  &kp PSCRN
+&trans  &kp F13                &kp F1       &kp F2    &kp F3        &kp F10              &sk LSHFT  &sk LCTRL  &sk LALT     &sk LGUI   &none      &none
+                                            &trans    &trans        &trans               &trans     &trans     &trans
             >;
         };
     };
