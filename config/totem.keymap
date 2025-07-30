@@ -17,17 +17,15 @@
 #include <dt-bindings/zmk/outputs.h>
 
 &lt {
-    tapping-term-ms = <180>;
-    quick-tap-ms = <150>;
+    quick-tap-ms = <200>;
     flavor = "balanced";
-    require-prior-idle-ms = <150>;
+    require-prior-idle-ms = <200>;
 };
 
 &mt {
-    tapping-term-ms = <180>;
-    quick-tap-ms = <150>;
+    quick-tap-ms = <200>;
     flavor = "balanced";
-    require-prior-idle-ms = <150>;
+    require-prior-idle-ms = <180>;
 };
 
 &mmv {
@@ -43,9 +41,9 @@
             #binding-cells = <2>;
             bindings = <&kp>, <&kp>;
 
-            tapping-term-ms = <180>;
-            quick-tap-ms = <150>;
-            require-prior-idle-ms = <150>;
+            tapping-term-ms = <200>;
+            quick-tap-ms = <200>;
+            require-prior-idle-ms = <180>;
             flavor = "tap-preferred";
         };
 
@@ -57,10 +55,10 @@
             #binding-cells = <2>;
             bindings = <&kp>, <&kp>;
 
-            tapping-term-ms = <180>;
-            quick-tap-ms = <150>;
+            tapping-term-ms = <200>;
+            quick-tap-ms = <200>;
             flavor = "tap-preferred";
-            require-prior-idle-ms = <150>;
+            require-prior-idle-ms = <180>;
         };
 
         // Unmodded: Left Shift | With Shift: Caps Word.
@@ -414,10 +412,10 @@
             //                         ┗━━━━━━━┻━━━━━━━┻━━━━━━━┛ ┗━━━━━━━┻━━━━━━━┻━━━━━━━┛
 
             bindings = <
-        &kp LT                     &kp N7       &kp N8           &kp N9        &kp GT                    &kp AMPS            &as LBKT         &kp HASH       &as RBKT       &as GRAVE
-        &hm LA(LC(LSHFT)) KP_PLUS  &hm LALT N4  &kp N5           &hm LGUI N6   &hm LS(LCTRL) KP_EQUAL    &hm RC(RSHFT) PIPE  &hm RGUI LPAR    &kp AT         &hm LALT RPAR  &hm RC(LA(RSHFT)) COLON
-&trans  &kp KP_MULTIPLY            &kp N1       &kp N2           &kp N3        &kp KP_DIVIDE             &as BSLH            &kp LBRC         &kp PERCENT    &kp RBRC       &as SEMI                 &trans
-                                                &mt LALT KP_DOT  &mt LCTRL N0  &mt LSHFT KP_MINUS        &mt RSHFT UNDER     &mt RCTRL CARET  &mt LALT DLLR
+        &kp LT                  &kp N7       &kp N8           &kp N9        &kp GT                 &kp AMPS            &as LBKT         &kp HASH       &as RBKT       &as GRAVE
+        &hm LA(LC(LSHFT)) PLUS  &hm LALT N4  &kp N5           &hm LGUI N6   &hm LS(LCTRL) EQUAL    &hm RC(RSHFT) PIPE  &hm RGUI LPAR    &kp AT         &hm LALT RPAR  &hm RC(LA(RSHFT)) COLON
+&trans  &kp STAR                &kp N1       &kp N2           &kp N3        &kp FSLH               &as BSLH            &kp LBRC         &kp PERCENT    &kp RBRC       &as SEMI                 &trans
+                                             &mt LALT KP_DOT  &mt LCTRL N0  &mt LSHFT KP_MINUS     &mt RSHFT UNDER     &mt RCTRL CARET  &mt LALT DLLR
             >;
         };
 
