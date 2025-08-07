@@ -14,7 +14,6 @@
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
-#include <dt-bindings/zmk/outputs.h>
 
 &lt {
     quick-tap-ms = <200>;
@@ -327,31 +326,24 @@
         to_base {
             bindings = <&to 0>;
             key-positions = <20 31>;
+            layers = <1 2 3>;
         };
 
         to_game {
             bindings = <&to 1>;
             key-positions = <20 31>;
-        };
-
-        bt_prv {
-            bindings = <&bt BT_PRV>;
-            key-positions = <5 6>;  // J L
-        };
-
-        bt_nxt {
-            bindings = <&bt BT_NXT>;
-            key-positions = <6 7>;  // L U
+            layers = <0>;
         };
 
         bt_clr {
             bindings = <&bt BT_CLR>;
-            key-positions = <6 7 5>; // J L U
+            key-positions = <5 6 7>;
+            layers = <3>;
         };
 
-        out {
-            bindings = <&out OUT_TOG>;
-            key-positions = <8 9>;
+        reset {
+            bindings = <&sys_reset>;
+            key-positions = <2 3 4>;
         };
     };
 
@@ -435,10 +427,10 @@
             //                         ┗━━━━━━━┻━━━━━━━┻━━━━━━━┛ ┗━━━━━━━┻━━━━━━━┻━━━━━━━┛
 
             bindings = <
-        &kp F15                &kp F7       &kp F8  &kp F9        &kp F12              &kp HOME   &kp PG_DN  &kp PG_UP  &kp END    &kp INS
-        &hm LC(LA(LSHFT)) F14  &hm LALT F4  &kp F5  &hm LCTRL F6  &mt LC(LSHFT) F11    &kp LEFT   &kp DOWN   &kp UP     &kp RIGHT  &kp PSCRN
-&trans  &kp F13                &kp F1       &kp F2  &kp F3        &kp F10              &sk LSHFT  &sk LCTRL  &sk LALT   &sk LGUI   &none      &trans
-                                            &trans  &trans        &trans               &trans     &trans     &trans
+        &kp F15                &kp F7       &kp F8  &kp F9        &kp F12              &kp HOME      &kp PG_DN     &kp PG_UP     &kp END       &kp INS
+        &hm LC(LA(LSHFT)) F14  &hm LALT F4  &kp F5  &hm LCTRL F6  &mt LC(LSHFT) F11    &kp LEFT      &kp DOWN      &kp UP        &kp RIGHT     &kp PSCRN
+&trans  &kp F13                &kp F1       &kp F2  &kp F3        &kp F10              &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4  &trans
+                                            &trans  &trans        &trans               &trans        &trans        &trans
             >;
         };
     };
