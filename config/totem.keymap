@@ -28,6 +28,7 @@
     flavor = "balanced";
     require-prior-idle-ms = <150>;
     tapping-term-ms = <280>;
+    bindings = <&sk>, <&kp>;
 };
 
 / {
@@ -237,9 +238,9 @@
             hold-trigger-on-release;
         };
 
-        mm_1p: mod_morph_1_pipe {
+        mm_1c: mod_morph_1_caret {
             compatible = "zmk,behavior-mod-morph";
-            bindings = <&kp N1>, <&kp PIPE>;
+            bindings = <&kp N1>, <&kp CARET>;
 
             #binding-cells = <0>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
@@ -261,9 +262,9 @@
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
 
-        ht_1p: hold_tap_1_pipe {
+        ht_1c: hold_tap_1_caret {
             compatible = "zmk,behavior-hold-tap";
-            bindings = <&kp>, <&mm_1p>;
+            bindings = <&kp>, <&mm_1c>;
 
             #binding-cells = <2>;
             tapping-term-ms = <280>;
@@ -288,6 +289,26 @@
         ht_0b: hold_tap_0_bslh {
             compatible = "zmk,behavior-hold-tap";
             bindings = <&kp>, <&mm_0b>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <280>;
+            quick-tap-ms = <175>;
+            require-prior-idle-ms = <150>;
+            flavor = "tap-preferred";
+            hold-trigger-on-release;
+        };
+
+        mm_6p: mod_morph_6_pipe {
+            compatible = "zmk,behavior-mod-morph";
+            bindings = <&kp N6>, <&kp PIPE>;
+
+            #binding-cells = <0>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        ht_6p: hold_tap_6_pipe {
+            compatible = "zmk,behavior-hold-tap";
+            bindings = <&kp>, <&mm_6p>;
 
             #binding-cells = <2>;
             tapping-term-ms = <280>;
@@ -414,15 +435,15 @@
                 <&ht_fs STAR 0>;
         };
 
-        as_1p: autoshift_1_pipe {
+        as_1c: autoshift_1_caret {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings =
                 <&macro_press>,
-                <&ht_1p PIPE 0>,
+                <&ht_1c CARET 0>,
                 <&macro_pause_for_release>,
                 <&macro_release>,
-                <&ht_1p PIPE 0>;
+                <&ht_1c CARET 0>;
         };
 
         as_9g: autoshift_9_grave {
@@ -446,6 +467,17 @@
                 <&macro_release>,
                 <&ht_0b BSLH 0>;
         };
+
+        as_6p: autoshift_6_pipe {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_press>,
+                <&ht_6p PIPE 0>,
+                <&macro_pause_for_release>,
+                <&macro_release>,
+                <&ht_6p PIPE 0>;
+        };
     };
 
     combos {
@@ -457,14 +489,24 @@
             layers = <0>;
         };
 
-        left_tab {
-            bindings = <&kp TAB>;
+        left_ctrl_shft {
+            bindings = <&sk LC(LSHFT)>;
             key-positions = <34 33>;
         };
 
-        right_tab {
-            bindings = <&kp TAB>;
-            key-positions = <36 37>;
+        right_ctrl_shft {
+            bindings = <&sk RC(RSHFT)>;
+            key-positions = <36 35>;
+        };
+
+        left_esc {
+            bindings = <&kp ESC>;
+            key-positions = <11 12 13>;
+        };
+
+        right_esc {
+            bindings = <&kp ESC>;
+            key-positions = <18 17 16>;
         };
     };
 
@@ -485,10 +527,10 @@
             //                         ┗━━━━━━━┻━━━━━━━┻━━━━━━━┛ ┗━━━━━━━┻━━━━━━━┻━━━━━━━┛
 
             bindings = <
-       &kp Q  &kp W  &kp F      &kp P        &kp B        &kp J      &kp L       &kp U      &kp Y   &as APOS
-       &kp A  &kp R  &kp S      &kp T        &kp G        &kp M      &kp N       &kp E      &kp I   &kp O
-&none  &kp Z  &kp X  &kp C      &kp D        &kp V        &kp K      &kp H       &as_cq     &as_de  &as_ft    &none
-                     &sk LCTRL  &lt 1 SPACE  &sk LSHFT    &sk RSHFT  &lt 2 BSPC  &sk RCTRL
+       &kp Q  &kp W  &kp F      &kp P        &kp B            &kp J          &kp L       &kp U      &kp Y   &as APOS
+       &kp A  &kp R  &kp S      &kp T        &kp G            &kp M          &kp N       &kp E      &kp I   &kp O
+&none  &kp Z  &kp X  &kp C      &kp D        &kp V            &kp K          &kp H       &as_cq     &as_de  &as_ft    &none
+                     &sk LCTRL  &lt 1 SPACE  &mt LSHFT TAB    &mt RSHFT RET  &lt 2 BSPC  &sk RCTRL
             >;
         };
 
@@ -506,10 +548,10 @@
             //                         ┗━━━━━━━┻━━━━━━━┻━━━━━━━┛ ┗━━━━━━━┻━━━━━━━┻━━━━━━━┛
 
             bindings = <
-       &sk LGUI  &sk LALT  &kp LS(TAB)  &kp TAB  &none     &kp PG_UP  &kp HOME   &kp UP    &kp END    &kp LC(BSPC)
-       &as_1p    &as N2    &kp N3       &kp N4   &kp N5    &kp PG_DN  &kp LEFT   &kp DOWN  &kp RIGHT  &kp RET
-&none  &kp N6    &kp N7    &kp N8       &as_9g   &as_0b    &kp SEMI   &none      &none     &none      &kp DEL       &none
-                           &trans       &trans   &trans    &kp UNDER  &kp COLON  &trans
+       &sk LGUI  &sk LALT  &kp LS(TAB)  &kp TAB  &as EQUAL    &kp PG_UP  &kp HOME   &kp UP    &kp END    &kp DEL
+       &as_1c    &as N2    &kp N3       &kp N4   &kp N5       &kp PG_DN  &kp LEFT   &kp DOWN  &kp RIGHT  &kp COLON
+&none  &as_6p    &as N7    &as N8       &as_9g   &as_0b       &as LBKT   &as_ll     &as_rg    &as RBKT   &kp SEMI   &none
+                           &trans       &trans   &trans       &kp MINUS  &kp UNDER  &trans
             >;
 
             label = "navigation";
@@ -529,10 +571,10 @@
             //                         ┗━━━━━━━┻━━━━━━━┻━━━━━━━┛ ┗━━━━━━━┻━━━━━━━┻━━━━━━━┛
 
             bindings = <
-       &kp LC(BSPC)  &kp END   &kp UP    &kp HOME   &kp PG_UP    &none   &kp LS(TAB)  &kp TAB  &sk LALT  &sk LGUI
-       &kp RET       &kp LEFT  &kp DOWN  &kp RIGHT  &kp PG_DN    &as_1p  &as N2       &as N3   &as N4    &as N5
-&none  &kp DEL       &none     &none     &none      &kp SEMI     &as N6  &as N7       &as N8   &as_9g    &as_0b    &none
-                               &trans    &kp COLON  &kp MINUS    &trans  &trans       &trans
+       &kp DEL    &kp HOME  &kp UP    &kp END    &kp PG_UP    &as EQUAL  &kp LS(TAB)  &kp TAB  &sk LALT  &sk LGUI
+       &kp COLON  &kp LEFT  &kp DOWN  &kp RIGHT  &kp PG_DN    &as_1c     &as N2       &as N3   &as N4    &as N5
+&none  &kp SEMI   &as LBKT  &as_ll    &as_rg     &as RBKT     &as_6p     &as N7       &as N8   &as_9g    &as_0b    &none
+                            &trans    &kp UNDER  &kp MINUS    &trans     &trans       &trans
             >;
         };
 
