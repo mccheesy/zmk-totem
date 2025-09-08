@@ -358,7 +358,7 @@
                 <&macro_release>,
                 <&ht_1c CARET 0>;
         };
-            
+
         as_4p: autoshift_4_prcnt {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
@@ -441,7 +441,7 @@
 
         l_launcher {
             bindings = <&kp LG(SPACE)>;
-            key-positions = <22 23 24>;
+            key-positions = <11 13>;
         };
 
         l_2 {
@@ -466,7 +466,7 @@
 
         r_launcher {
             bindings = <&kp LG(SPACE)>;
-            key-positions = <27 28 29>;
+            key-positions = <16 18>;
         };
 
         r_1 {
@@ -474,6 +474,15 @@
             key-positions = <35 36>;
         };
 
+        l_return {
+            bindings = <&kp RET>;
+            key-positions = <11 12 13>;
+        };
+
+        r_return {
+            bindings = <&kp RET>;
+            key-positions = <16 17 18>;
+        };
     };
 
     keymap {
@@ -494,9 +503,9 @@
             //                         ┗━━━━━━━┻━━━━━━━┻━━━━━━━┛ ┗━━━━━━━┻━━━━━━━┻━━━━━━━┛
 
             bindings = <
-       &kp Q  &kp W  &kp F      &kp P        &kp B        &kp J      &kp L       &kp U       &kp Y   &as SQT
-       &kp A  &kp R  &kp S      &kp T        &kp G        &kp M      &kp N       &kp E       &kp I   &kp O
-&none  &kp Z  &kp X  &kp C      &kp D        &kp V        &kp K      &kp H       &as_cq      &as_de  &as_ft   &none
+       &kp Q  &kp W  &kp F      &kp P        &kp B        &kp J      &kp L       &kp U      &kp Y   &as SQT
+       &kp A  &kp R  &kp S      &kp T        &kp G        &kp M      &kp N       &kp E      &kp I   &kp O
+&none  &kp Z  &kp X  &kp C      &kp D        &kp V        &kp K      &kp H       &as_cq     &as_de  &as_ft   &none
                      &sk LCTRL  &lt 1 SPACE  &sk LSHFT    &sk RSHFT  &lt 2 BSPC  &sk RCTRL
             >;
         };
@@ -516,10 +525,10 @@
             //                         ┗━━━━━━━┻━━━━━━━┻━━━━━━━┛ ┗━━━━━━━┻━━━━━━━┻━━━━━━━┛
 
             bindings = <
-       &kp LT    &kp LBKT  &kp UNDER  &kp RBKT   &kp GT       &mt PSCRN RC(PSCRN)  &kp TAB    &kp RS(TAB)  &sk LALT   &sk RGUI
-       &kp LBRC  &kp LPAR  &kp COLON  &kp RPAR   &kp RBRC     &kp LEFT             &kp DOWN   &kp UP       &kp RIGHT  &none
-&none  &none     &none     &kp SEMI   &kp EQUAL  &kp PLUS     &kp HOME             &kp PG_DN  &kp PG_UP    &kp END    &kp INS   &none
-                           &trans     &trans     &trans       &as MINUS            &as EQUAL  &sk RCTRL
+       &kp LT    &kp LBKT  &kp UNDER  &kp RBKT   &kp GT      &mt PSCRN RC(PSCRN)  &kp TAB    &kp RS(TAB)  &sk LALT   &sk RGUI
+       &kp LBRC  &kp LPAR  &kp COLON  &kp RPAR   &kp RBRC    &kp LEFT             &kp DOWN   &kp UP       &kp RIGHT  &none
+&none  &none     &none     &kp SEMI   &kp EQUAL  &kp PLUS    &kp HOME             &kp PG_DN  &kp PG_UP    &kp END    &kp INS   &none
+                           &trans     &trans     &trans      &as MINUS            &as EQUAL  &sk RCTRL
             >;
         };
 
@@ -561,10 +570,10 @@
             //                         ┗━━━━━━━┻━━━━━━━┻━━━━━━━┛ ┗━━━━━━━┻━━━━━━━┻━━━━━━━┛
 
             bindings = <
-       &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4  &sys_reset           &bootloader          &none    &none    &bt BT_CLR
-       &kp F1        &kp F2        &kp F3        &kp F4        &kp F5        &mt LS(LC(F11)) F11  &mt LC(LS(F12)) F12  &kp F13  &kp F14  &kp F15  &none
-&none  &kp F6        &kp F7        &kp F8        &kp F9        &kp F10       &kp F16              &kp F17              &kp F18  &kp F19  &kp F20  &none
-                                   &none         &none         &none         &none                &none                &none
+       &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4    &sys_reset           &bootloader          &none    &none    &bt BT_CLR
+       &kp F1        &kp F2        &kp F3        &kp F4        &kp F5          &mt LS(LC(F11)) F11  &mt LC(LS(F12)) F12  &kp F13  &kp F14  &kp F15
+&none  &none         &kp F6        &kp F7        &kp F8        &kp F9          &kp F10              &kp F16              &kp F17  &kp F18  &kp F19     &kp F20
+                                   &none         &none         &none           &none                &none                &none
             >;
         };
     };
