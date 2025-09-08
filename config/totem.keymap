@@ -426,7 +426,7 @@
 
         l_ctrl_shft {
             bindings = <&sk LS(LCTRL)>;
-            key-positions = <10 11>;
+            key-positions = <12 13>;
         };
 
         l_esc {
@@ -434,24 +434,9 @@
             key-positions = <11 12>;
         };
 
-        l_tab {
-            bindings = <&kp TAB>;
-            key-positions = <12 13>;
-        };
-
         l_launcher {
             bindings = <&kp LG(SPACE)>;
             key-positions = <11 13>;
-        };
-
-        l_2 {
-            bindings = <&sl 2>;
-            key-positions = <33 34>;
-        };
-
-        r_tab {
-            bindings = <&kp TAB>;
-            key-positions = <16 17>;
         };
 
         r_esc {
@@ -461,27 +446,12 @@
 
         r_ctrl_shft {
             bindings = <&sk RS(RCTRL)>;
-            key-positions = <18 19>;
+            key-positions = <16 17>;
         };
 
         r_launcher {
             bindings = <&kp LG(SPACE)>;
             key-positions = <16 18>;
-        };
-
-        r_1 {
-            bindings = <&sl 2>;
-            key-positions = <35 36>;
-        };
-
-        l_return {
-            bindings = <&kp RET>;
-            key-positions = <11 12 13>;
-        };
-
-        r_return {
-            bindings = <&kp RET>;
-            key-positions = <16 17 18>;
         };
     };
 
@@ -503,10 +473,10 @@
             //                         ┗━━━━━━━┻━━━━━━━┻━━━━━━━┛ ┗━━━━━━━┻━━━━━━━┻━━━━━━━┛
 
             bindings = <
-       &kp Q  &kp W  &kp F      &kp P        &kp B        &kp J      &kp L       &kp U      &kp Y   &as SQT
-       &kp A  &kp R  &kp S      &kp T        &kp G        &kp M      &kp N       &kp E      &kp I   &kp O
-&none  &kp Z  &kp X  &kp C      &kp D        &kp V        &kp K      &kp H       &as_cq     &as_de  &as_ft   &none
-                     &sk LCTRL  &lt 1 SPACE  &sk LSHFT    &sk RSHFT  &lt 2 BSPC  &sk RCTRL
+       &kp Q  &kp W  &kp F      &kp P        &kp B            &kp J          &kp L       &kp U      &kp Y   &as SQT
+       &kp A  &kp R  &kp S      &kp T        &kp G            &kp M          &kp N       &kp E      &kp I   &kp O
+&none  &kp Z  &kp X  &kp C      &kp D        &kp V            &kp K          &kp H       &as_cq     &as_de  &as_ft   &none
+                     &sk LCTRL  &lt 1 SPACE  &mt LSHFT TAB    &mt RSHFT RET  &lt 2 BSPC  &sk RCTRL
             >;
         };
 
@@ -525,10 +495,10 @@
             //                         ┗━━━━━━━┻━━━━━━━┻━━━━━━━┛ ┗━━━━━━━┻━━━━━━━┻━━━━━━━┛
 
             bindings = <
-       &kp LT    &kp LBKT  &kp UNDER  &kp RBKT   &kp GT      &mt PSCRN RC(PSCRN)  &kp TAB    &kp RS(TAB)  &sk LALT   &sk RGUI
-       &kp LBRC  &kp LPAR  &kp COLON  &kp RPAR   &kp RBRC    &kp LEFT             &kp DOWN   &kp UP       &kp RIGHT  &none
-&none  &none     &none     &kp SEMI   &kp EQUAL  &kp PLUS    &kp HOME             &kp PG_DN  &kp PG_UP    &kp END    &kp INS   &none
-                           &trans     &trans     &trans      &as MINUS            &as EQUAL  &sk RCTRL
+       &kp LT    &kp LBKT   &kp MINUS  &kp RBKT       &kp GT      &mt PSCRN RC(PSCRN)  &kp TAB    &kp RS(TAB)  &sk LALT   &sk RGUI
+       &kp LBRC  &kp LPAR   &kp COLON  &kp RPAR       &kp RBRC    &kp LEFT             &kp DOWN   &kp UP       &kp RIGHT  &none
+&none  &none     &kp UNDER  &kp SEMI   &kp RS(EQUAL)  &kp PLUS    &kp HOME             &kp PG_DN  &kp PG_UP    &kp END    &kp INS   &none
+                            &trans     &trans         &trans      &trans               &trans     &trans
             >;
         };
 
@@ -549,10 +519,10 @@
             //                         ┗━━━━━━━┻━━━━━━━┻━━━━━━━┛ ┗━━━━━━━┻━━━━━━━┻━━━━━━━┛
 
             bindings = <
-       &sk LGUI  &sk LALT  &kp LS(TAB)  &kp TAB    &mt LC(PSCRN) PSCRN    &kp LT    &kp LBKT   &kp UNDER  &kp RBKT  &kp GT
-       &as_1c    &as N2    &as N3       &as_4p     &as_5d                 &kp LBRC  &kp LPAR   &kp COLON  &kp RPAR  &kp RBRC
-&none  &as_6g    &as N7    &as N8       &as_9p     &as_0b                 &kp PLUS  &kp EQUAL  &kp SEMI   &none     &none     &none
-                           &sk LCTRL    &as EQUAL  &as MINUS              &trans    &trans     &trans
+       &sk LGUI  &sk LALT  &kp LS(TAB)  &kp TAB  &mt LC(PSCRN) PSCRN    &kp LT    &kp LBKT   &kp MINUS  &kp RBKT   &kp GT
+       &as_1c    &as N2    &as N3       &as_4p   &as_5d                 &kp LBRC  &kp LPAR   &kp COLON  &kp RPAR   &kp RBRC
+&none  &as_6g    &as N7    &as N8       &as_9p   &as_0b                 &kp PLUS  &kp EQUAL  &kp SEMI   &kp UNDER  &none     &none
+                           &trans       &trans   &trans                 &trans    &trans     &trans
             >;
         };
 
