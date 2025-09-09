@@ -473,10 +473,10 @@
             //                         ┗━━━━━━━┻━━━━━━━┻━━━━━━━┛ ┗━━━━━━━┻━━━━━━━┻━━━━━━━┛
 
             bindings = <
-       &kp Q  &kp W  &kp F      &kp P        &kp B            &kp J          &kp L       &kp U      &kp Y   &as SQT
-       &kp A  &kp R  &lt 2 S    &kp T        &kp G            &kp M          &kp N       &lt 2 E    &kp I   &kp O
-&none  &kp Z  &kp X  &kp C      &kp D        &kp V            &kp K          &kp H       &as_cq     &as_de  &as_ft   &none
-                     &sk LCTRL  &lt 1 SPACE  &mt LSHFT TAB    &mt RSHFT RET  &lt 1 BSPC  &sk RCTRL
+       &kp Q  &kp W  &kp F          &kp P        &kp B            &kp J          &kp L       &kp U          &kp Y   &as SQT
+       &kp A  &kp R  &lt 2 S        &kp T        &kp G            &kp M          &kp N       &lt 2 E        &kp I   &kp O
+&none  &kp Z  &kp X  &kp C          &kp D        &kp V            &kp K          &kp H       &as_cq         &as_de  &as_ft   &none
+                     &mt LCTRL ESC  &lt 1 SPACE  &mt LSHFT TAB    &mt RSHFT RET  &lt 1 BSPC  &mt RCTRL DEL
             >;
         };
 
@@ -499,7 +499,7 @@
             bindings = <
        &sk LGUI  &sk LALT  &kp LS(TAB)  &kp TAB  &mt LC(PSCRN) PSCRN    &mt PSCRN RC(PSCRN)  &kp TAB    &kp RS(TAB)  &sk LALT   &sk RGUI
        &as_1c    &as N2    &as N3       &as_4p   &as_5d                 &kp LEFT             &kp DOWN   &kp UP       &kp RIGHT  &none
-&none  &as_6g    &as N7    &as N8       &as_9p   &as_0b                 &kp HOME             &kp PG_DN  &kp PG_UP    &kp END    &kp INS   &none
+&none  &as_6g    &as N7    &as N8       &as_9p   &as_0b                 &kp HOME             &kp PG_DN  &kp PG_UP    &kp END    &none     &none
                            &trans       &trans   &trans                 &trans               &trans     &trans
             >;
         };
@@ -519,10 +519,10 @@
             //                         ┗━━━━━━━┻━━━━━━━┻━━━━━━━┛ ┗━━━━━━━┻━━━━━━━┻━━━━━━━┛
 
             bindings = <
-       &kp LT    &kp LBKT  &kp MINUS  &kp RBKT   &kp GT       &kp LT     &kp LBKT   &kp MINUS  &kp RBKT  &kp GT
-       &kp LBRC  &kp LPAR  &trans     &kp RPAR   &kp RBRC     &kp LBRC   &kp LPAR   &trans     &kp RPAR  &kp RBRC
-&none  &kp SEMI  &none     &kp EQUAL  &kp PLUS   &none        &none      &kp PLUS   &kp EQUAL  &none     &kp SEMI  &none
-                           &trans     &kp COLON  &kp UNDER    &kp UNDER  &kp COLON  &trans
+       &kp LT    &kp LBKT   &none   &kp RBKT   &kp GT       &kp LT     &kp LBKT   &none   &kp RBKT   &kp GT
+       &kp LBRC  &kp LPAR   &none   &kp RPAR   &kp RBRC     &kp LBRC   &kp LPAR   &none   &kp RPAR   &kp RBRC
+&none  &kp SEMI  &kp EQUAL  &none   &kp PLUS   &kp MINUS    &kp MINUS  &kp PLUS   &none   &kp EQUAL  &kp SEMI  &none
+                            &trans  &kp COLON  &kp UNDER    &kp UNDER  &kp COLON  &trans
             >;
         };
 
