@@ -473,10 +473,10 @@
             //                         ┗━━━━━━━┻━━━━━━━┻━━━━━━━┛ ┗━━━━━━━┻━━━━━━━┻━━━━━━━┛
 
             bindings = <
-       &kp Q  &kp W  &kp F          &kp P        &kp B            &kp J          &kp L       &kp U          &kp Y   &as SQT
-       &kp A  &kp R  &lt 2 S        &kp T        &kp G            &kp M          &kp N       &lt 2 E        &kp I   &kp O
-&none  &kp Z  &kp X  &kp C          &kp D        &kp V            &kp K          &kp H       &as_cq         &as_de  &as_ft   &none
-                     &mt LCTRL ESC  &lt 1 SPACE  &mt LSHFT TAB    &mt RSHFT RET  &lt 1 BSPC  &mt RCTRL DEL
+       &kp Q       &kp W       &kp F          &kp P        &kp B            &kp J          &kp L       &kp U          &kp Y       &as SQT
+       &mt LGUI A  &mt LALT R  &lt 2 S        &kp T        &kp G            &kp M          &kp N       &lt 2 E        &mt LALT I  &mt RGUI O
+&none  &kp Z       &kp X       &kp C          &kp D        &kp V            &kp K          &kp H       &as_cq         &as_de      &as_ft      &none
+                               &mt LCTRL ESC  &lt 1 SPACE  &mt LSHFT TAB    &mt RSHFT RET  &lt 1 BSPC  &mt RCTRL DEL
             >;
         };
 
