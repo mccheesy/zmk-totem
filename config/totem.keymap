@@ -413,6 +413,36 @@
                 <&macro_release>,
                 <&ht_0b BSLH 0>;
         };
+
+        alt_tab: alt_tab {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_press>,
+                <&kp LALT>,
+                <&macro_tap>,
+                <&kp TAB>,
+                <&macro_pause_for_release>,
+                <&macro_release>,
+                <&kp LALT>;
+
+            label = "ALT_TAB";
+        };
+
+        shift_alt_tab: shift_alt_tab {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_press>,
+                <&kp LS(LALT)>,
+                <&macro_tap>,
+                <&kp TAB>,
+                <&macro_pause_for_release>,
+                <&macro_release>,
+                <&kp LS(LALT)>;
+
+            label = "SHIFT_ALT_TAB";
+        };
     };
 
     combos {
@@ -424,13 +454,13 @@
             layers = <0>;
         };
 
-        l_ctrl_shft {
-            bindings = <&sk LS(LCTRL)>;
+        l_alt_tab {
+            bindings = <&alt_tab>;
             key-positions = <12 13>;
         };
 
-        l_esc {
-            bindings = <&kp ESC>;
+        l_shift_alt_tab {
+            bindings = <&shift_alt_tab>;
             key-positions = <11 12>;
         };
 
@@ -439,13 +469,13 @@
             key-positions = <11 13>;
         };
 
-        r_esc {
-            bindings = <&kp ESC>;
+        r_alt_tab {
+            bindings = <&alt_tab>;
             key-positions = <17 18>;
         };
 
-        r_ctrl_shft {
-            bindings = <&sk RS(RCTRL)>;
+        r_shift_alt_tab {
+            bindings = <&shift_alt_tab>;
             key-positions = <16 17>;
         };
 
@@ -473,10 +503,10 @@
             //                         ┗━━━━━━━┻━━━━━━━┻━━━━━━━┛ ┗━━━━━━━┻━━━━━━━┻━━━━━━━┛
 
             bindings = <
-       &kp Q       &kp W       &kp F          &kp P        &kp B            &kp J          &kp L       &kp U          &kp Y       &as SQT
-       &mt LGUI A  &mt LALT R  &lt 2 S        &kp T        &kp G            &kp M          &kp N       &lt 2 E        &mt LALT I  &mt RGUI O
-&none  &kp Z       &kp X       &kp C          &kp D        &kp V            &kp K          &kp H       &as_cq         &as_de      &as_ft      &none
-                               &mt LCTRL ESC  &lt 1 SPACE  &mt LSHFT TAB    &mt RSHFT RET  &lt 1 BSPC  &mt RCTRL DEL
+       &kp Q            &kp W       &kp F      &kp P            &kp B            &kp J          &kp L           &kp U      &kp Y       &as SQT
+       &mt LGUI A       &mt LALT R  &lt 2 S    &kp T            &kp G            &kp M          &kp N           &lt 2 E    &mt LALT I  &mt RGUI O
+&none  &mt LC(LSHFT) Z  &kp X       &kp C      &kp D            &kp V            &kp K          &kp H           &as_cq     &as_de      &as_ft      &none
+                                    &lt 1 ESC  &mt LCTRL SPACE  &mt LSHFT TAB    &mt RSHFT RET  &mt LCTRL BSPC  &lt 1 DEL
             >;
         };
 
