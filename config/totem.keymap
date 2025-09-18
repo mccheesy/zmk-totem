@@ -191,6 +191,60 @@
             quick-tap-ms = <0>;
             flavor = "tap-preferred";
         };
+
+        mm_aa: mod_morph_at_amps {
+            compatible = "zmk,behavior-mod-morph";
+            bindings = <&kp AT>, <&kp AMPS>;
+
+            #binding-cells = <0>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        ht_aa: hold_tap_at_amps {
+            compatible = "zmk,behavior-hold-tap";
+            bindings = <&kp>, <&mm_aa>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <150>;
+            quick-tap-ms = <0>;
+            flavor = "tap-preferred";
+        };
+
+        mm_mh: mod_morph_minus_hash {
+            compatible = "zmk,behavior-mod-morph";
+            bindings = <&kp MINUS>, <&kp HASH>;
+
+            #binding-cells = <0>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        ht_mh: hold_tap_minus_hash {
+            compatible = "zmk,behavior-hold-tap";
+            bindings = <&kp>, <&mm_mh>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <150>;
+            quick-tap-ms = <0>;
+            flavor = "tap-preferred";
+        };
+
+        mm_sp: mod_morph_star_prcnt {
+            compatible = "zmk,behavior-mod-morph";
+            bindings = <&kp STAR>, <&kp PRCNT>;
+
+            #binding-cells = <0>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        ht_sp: hold_tap_star_prcnt {
+            compatible = "zmk,behavior-hold-tap";
+            bindings = <&kp>, <&mm_sp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <150>;
+            quick-tap-ms = <0>;
+            flavor = "tap-preferred";
+        };
     };
 
     macros {
@@ -307,25 +361,54 @@
 
             label = "SHIFT_ALT_TAB";
         };
+
+        as_aa: autoshift_at_amps {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_press>,
+                <&ht_aa AMPS 0>,
+                <&macro_pause_for_release>,
+                <&macro_release>,
+                <&ht_aa AMPS 0>;
+        };
+
+        as_mh: autoshift_minus_hash {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_press>,
+                <&ht_mh HASH 0>,
+                <&macro_pause_for_release>,
+                <&macro_release>,
+                <&ht_mh HASH 0>;
+        };
+
+        as_sp: autoshift_star_prcnt {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_press>,
+                <&ht_sp PRCNT 0>,
+                <&macro_pause_for_release>,
+                <&macro_release>,
+                <&ht_sp PRCNT 0>;
+        };
     };
 
     combos {
         compatible = "zmk,combos";
 
-        function_layer {
+        l_fun {
             bindings = <&sl 3>;
-            key-positions = <1 2 3>;
+            key-positions = <1 3>;
             layers = <0>;
         };
 
-        l_alt_tab {
-            bindings = <&alt_tab>;
-            key-positions = <12 13>;
-        };
-
-        l_shift_alt_tab {
-            bindings = <&shift_alt_tab>;
-            key-positions = <11 12>;
+        r_fun {
+            bindings = <&sl 3>;
+            key-positions = <6 8>;
+            layers = <0>;
         };
 
         l_launcher {
@@ -333,18 +416,8 @@
             key-positions = <11 13>;
         };
 
-        r_alt_tab {
-            bindings = <&alt_tab>;
-            key-positions = <17 18>;
-        };
-
-        r_shift_alt_tab {
-            bindings = <&shift_alt_tab>;
-            key-positions = <16 17>;
-        };
-
         r_launcher {
-            bindings = <&kp LG(SPACE)>;
+            bindings = <&kp RG(SPACE)>;
             key-positions = <16 18>;
         };
     };
@@ -366,10 +439,10 @@
             //                         ┗━━━━━━━┻━━━━━━━┻━━━━━━━┛ ┗━━━━━━━┻━━━━━━━┻━━━━━━━┛
 
             bindings = <
-       &kp Q        &kp W  &hll 3 F      &kp P            &kp B            &kp J          &kp L           &hlr 3 U      &kp Y   &as SQT
-       &hml LGUI A  &kp R  &hll 2 S      &hll 1 T         &kp G            &kp M          &hlr 1 N        &hlr 2 E      &kp I   &hmr RGUI O
-&none  &kp Z        &kp X  &kp C         &kp D            &kp V            &kp K          &kp H           &as_cq        &as_de  &as_ft       &none
-                           &mt LALT ESC  &mt LCTRL SPACE  &mt LSHFT TAB    &mt RSHFT RET  &mt RCTRL BSPC  &mt LALT DEL
+           &kp Q        &kp W        &kp F              &kp P        &kp B            &kp J          &kp L       &kp U              &kp Y        &as SQT
+           &hml LGUI A  &hml LALT R  &hml LCTRL S       &hll 2 T     &kp G            &kp M          &hlr 1 N    &hmr LCTRL E       &hmr LALT I  &hmr RGUI O
+&sk LCTRL  &kp Z        &kp X        &kp C              &kp D        &kp V            &kp K          &kp H       &as_cq             &as_de       &as_ft       &sk RCTRL
+                                     &mt LC(LSHFT) ESC  &lt 1 SPACE  &mt LSHFT TAB    &mt RSHFT RET  &lt 2 BSPC  &mt RC(RSHFT) DEL
             >;
         };
 
@@ -387,31 +460,20 @@
             //                         ┗━━━━━━━┻━━━━━━━┻━━━━━━━┛ ┗━━━━━━━┻━━━━━━━┻━━━━━━━┛
 
             bindings = <
-       &kp FSLH  &kp STAR  &kp PLUS  &kp EQUAL  &kp MINUS    &none     &none      &none      &none      &none
-       &kp N1    &kp N2    &kp N3    &kp N4     &kp N5       &kp LEFT  &kp DOWN   &kp UP     &kp RIGHT  &kp RGUI 
-&none  &kp N6    &kp N7    &kp N8    &kp N9     &kp N0       &kp HOME  &kp PG_DN  &kp PG_UP  &kp END    &kp INS  &none
-                           &trans    &trans     &trans       &trans    &trans     &trans
+        &kp CARET     &as_sp        &as_mh         &as EQUAL      &kp DLLR     &none      &none      &as LBKT  &as RBKT  &kp GRAVE
+        &hml LGUI N1  &hml LALT N2  &hml LCTRL N3  &hml LSHFT N4  &kp N5       &none      &none      &kp LPAR  &kp RPAR  &as_aa
+&trans  &kp N6        &kp N7        &kp N8         &kp N9         &kp N0       &none      &none      &kp LT    &kp GT    &kp SEMI   &trans
+                                    &as_sp         &as_mh         &as EQUAL    &kp UNDER  &kp COLON  &as BSLH
             >;
         };
 
-        sym {
-            display-name = "symbol";
-
-            //         ┏━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━┓ ┏━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━┓
-            //         ┃   &   ┃   [   ┃       ┃   ]   ┃   @   ┃ ┃   @   ┃   [   ┃       ┃   ]   ┃   &   ┃
-            //         ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫ ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫
-            //         ┃   ^   ┃   (   ┃       ┃   )   ┃   $   ┃ ┃   ^   ┃   (   ┃       ┃   )   ┃   $   ┃
-            // ┏━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫ ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┓
-            // ┃       ┃   ;   ┃   `   ┃       ┃   |   ┃   \   ┃ ┃   \   ┃   |   ┃       ┃   `   ┃   ;   ┃       ┃
-            // ┗━━━━━━━┻━━━━━━━┻━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫ ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┻━━━━━━━┻━━━━━━━┛
-            //                         ┃   -   ┃   :   ┃   _   ┃ ┃   _   ┃   :   ┃   -   ┃
-            //                         ┗━━━━━━━┻━━━━━━━┻━━━━━━━┛ ┗━━━━━━━┻━━━━━━━┻━━━━━━━┛
-
+        nav {
+            display-name = "navigation";
             bindings = <
-       &kp AMPS   &as LBKT   &none           &as RBKT         &kp AT             &kp AT           &as LBKT         &none           &as RBKT   &kp AMPS
-       &kp CARET  &as_ll     &none           &as_rg           &kp DLLR           &kp CARET        &as_ll           &none           &as_rg     &kp DLLR
-&none  &kp SEMI   &kp GRAVE  &none           &kp PIPE         &kp BSLH           &kp BSLH         &kp PIPE         &none           &kp GRAVE  &kp SEMI  &none
-                             &mt LALT MINUS  &mt LCTRL COLON  &mt LSHFT UNDER    &mt RSHFT UNDER  &mt RCTRL COLON  &mt LALT MINUS
+        &kp GRAVE  &as LBKT  &as RBKT  &none      &none        &kp RS(RC(G))  &kp RC(RS(T))  &kp RC(RS(F))  &kp RC(RS(R))  &mt RC(Q) RC(W)
+        &as_aa     &kp LPAR  &kp RPAR  &none      &none        &kp LEFT       &kp DOWN       &kp UP         &kp RIGHT      &mt PSCRN RC(PSCRN)
+&trans  &kp SEMI   &kp LT    &kp GT    &none      &none        &kp HOME       &kp PG_DN      &kp PG_UP      &kp END        &kp INS              &trans
+                             &as BSLH  &kp COLON  &kp UNDER    &kp RS(RC(T))  &kp RS(RC(F))  &kp RC(RS(R))
             >;
         };
 
@@ -429,10 +491,10 @@
             //                         ┗━━━━━━━┻━━━━━━━┻━━━━━━━┛ ┗━━━━━━━┻━━━━━━━┻━━━━━━━┛
 
             bindings = <
-       &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4    &bootloader   &sys_reset  &none    &none    &bt BT_CLR
-       &kp F1        &kp F2        &kp F3        &kp F4        &kp F5          &kp F11       &kp F12     &kp F13  &kp F14  &kp F15
-&none  &kp F6        &kp F7        &kp F8        &kp F9        &kp F10         &kp F16       &kp F17     &kp F18  &kp F19  &kp F20     &none
-                                   &trans        &trans        &trans          &trans        &trans      &trans
+       &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4    &bootloader  &sys_reset  &none    &none    &bt BT_CLR
+       &kp F1        &kp F2        &kp F3        &kp F4        &kp F5          &kp F11      &kp F12     &kp F13  &kp F14  &kp F15
+&none  &kp F6        &kp F7        &kp F8        &kp F9        &kp F10         &kp F16      &kp F17     &kp F18  &kp F19  &kp F20     &none
+                                   &trans        &trans        &trans          &trans       &trans      &trans
             >;
         };
     };
