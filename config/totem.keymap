@@ -439,10 +439,10 @@
             //                         ┗━━━━━━━┻━━━━━━━┻━━━━━━━┛ ┗━━━━━━━┻━━━━━━━┻━━━━━━━┛
 
             bindings = <
-           &kp Q        &kp W        &kp F              &kp P        &kp B            &kp J          &kp L       &kp U              &kp Y        &as SQT
-           &hml LGUI A  &hml LALT R  &hml LCTRL S       &hll 2 T     &kp G            &kp M          &hlr 1 N    &hmr LCTRL E       &hmr LALT I  &hmr RGUI O
-&sk LCTRL  &kp Z        &kp X        &kp C              &kp D        &kp V            &kp K          &kp H       &as_cq             &as_de       &as_ft       &sk RCTRL
-                                     &mt LC(LSHFT) ESC  &lt 1 SPACE  &mt LSHFT TAB    &mt RSHFT RET  &lt 2 BSPC  &mt RC(RSHFT) DEL
+       &kp Q        &kp W        &kp F             &kp P            &kp B            &kp J          &kp L           &kp U             &kp Y        &as SQT
+       &hml LGUI A  &hml LALT R  &hll 2 S          &hll 1 T         &kp G            &kp M          &hlr 1 N        &hlr 2 E          &hmr LALT I  &hmr RGUI O
+&none  &kp Z        &kp X        &kp C             &kp D            &kp V            &kp K          &kp H           &as_cq            &as_de       &as_ft       &none
+                                 &mt LC(LALT) ESC  &mt LCTRL SPACE  &mt LSHFT TAB    &mt RSHFT RET  &mt RCTRL BSPC  &mt RC(LALT) DEL
             >;
         };
 
@@ -460,20 +460,20 @@
             //                         ┗━━━━━━━┻━━━━━━━┻━━━━━━━┛ ┗━━━━━━━┻━━━━━━━┻━━━━━━━┛
 
             bindings = <
-        &kp CARET     &as_sp        &as_mh         &as EQUAL      &kp DLLR     &none      &none      &as LBKT  &as RBKT  &kp GRAVE
-        &hml LGUI N1  &hml LALT N2  &hml LCTRL N3  &hml LSHFT N4  &kp N5       &none      &none      &kp LPAR  &kp RPAR  &as_aa
-&trans  &kp N6        &kp N7        &kp N8         &kp N9         &kp N0       &none      &none      &kp LT    &kp GT    &kp SEMI   &trans
-                                    &as_sp         &as_mh         &as EQUAL    &kp UNDER  &kp COLON  &as BSLH
+        &kp CARET     &kp AT        &kp PLUS            &kp HASH         &kp DLLR           &kp RC(RS(G))        &kp RS(RC(T))        &kp RC(RS(F))           &kp RC(RS(R))  &mt RC(Q) RC(W)
+        &hml LGUI N1  &hml LALT N2  &hml LCTRL N3       &hml LSHFT N4    &kp N5             &kp LEFT             &kp DOWN             &kp UP                  &kp RIGHT      &mt PSCRN RC(PSCRN)
+&trans  &kp N6        &kp N7        &kp N8              &kp N9           &kp N0             &kp HOME             &kp PG_DN            &kp PG_UP               &kp END        &kp INS              &trans
+                                    &mt LC(LALT) PRCNT  &mt LCTRL MINUS  &mt LSHFT EQUAL    &mt RSHFT RS(RC(G))  &mt RCTRL RS(RC(T))  &mt RC(LALT) RS(RC(F))
             >;
         };
 
-        nav {
-            display-name = "navigation";
+        sym {
+            display-name = "symbol";
             bindings = <
-        &kp GRAVE  &as LBKT  &as RBKT  &none      &none        &kp RS(RC(G))  &kp RC(RS(T))  &kp RC(RS(F))  &kp RC(RS(R))  &mt RC(Q) RC(W)
-        &as_aa     &kp LPAR  &kp RPAR  &none      &none        &kp LEFT       &kp DOWN       &kp UP         &kp RIGHT      &mt PSCRN RC(PSCRN)
-&trans  &kp SEMI   &kp LT    &kp GT    &none      &none        &kp HOME       &kp PG_DN      &kp PG_UP      &kp END        &kp INS              &trans
-                             &as BSLH  &kp COLON  &kp UNDER    &kp RS(RC(T))  &kp RS(RC(F))  &kp RC(RS(R))
+        &kp LT    &kp LBKT   &none     &kp RBKT   &kp GT       &kp LT     &kp LBKT   &none     &kp RBKT   &kp GT
+        &kp LBRC  &kp LPAR   &none     &kp RPAR   &kp RBRC     &kp LBRC   &kp LPAR   &none     &kp RPAR   &kp RBRC
+&trans  &kp SEMI  &kp GRAVE  &none     &kp PIPE   &kp BSLH     &kp BSLH   &kp PIPE   &none     &kp GRAVE  &kp SEMI  &trans
+                             &kp AMPS  &kp COLON  &kp UNDER    &kp UNDER  &kp COLON  &kp AMPS
             >;
         };
 
