@@ -460,10 +460,10 @@
             //                         ┗━━━━━━━┻━━━━━━━┻━━━━━━━┛ ┗━━━━━━━┻━━━━━━━┻━━━━━━━┛
 
             bindings = <
-        &kp CARET     &kp STAR      &kp PLUS            &kp HASH         &kp DLLR           &kp RC(RS(G))        &kp RS(RC(T))        &kp RC(RS(F))           &kp RC(RS(R))  &mt RC(Q) RC(W)
-        &hml LGUI N1  &hml LALT N2  &hml LCTRL N3       &hml LSHFT N4    &kp N5             &kp LEFT             &kp DOWN             &kp UP                  &kp RIGHT      &mt PSCRN RC(PSCRN)
-&trans  &kp N6        &kp N7        &kp N8              &kp N9           &kp N0             &kp HOME             &kp PG_DN            &kp PG_UP               &kp END        &kp INS              &trans
-                                    &mt LC(LALT) PRCNT  &mt LCTRL MINUS  &mt LSHFT EQUAL    &mt RSHFT RS(RC(G))  &mt RCTRL RS(RC(T))  &mt RC(LALT) RS(RC(F))
+        &kp CARET     &kp STAR      &kp PLUS            &kp HASH         &kp DLLR           &kp RC(RS(G))    &kp RS(RC(T))    &kp RC(RS(F))       &kp RC(RS(R))  &mt RC(Q) RC(W)
+        &hml LGUI N1  &hml LALT N2  &hml LCTRL N3       &hml LSHFT N4    &kp N5             &kp LEFT         &kp DOWN         &kp UP              &kp RIGHT      &mt PSCRN RC(PSCRN)
+&trans  &kp N6        &kp N7        &kp N8              &kp N9           &kp N0             &kp HOME         &kp PG_DN        &kp PG_UP           &kp END        &kp INS              &trans
+                                    &mt LC(LALT) PRCNT  &mt LCTRL EQUAL  &mt LSHFT MINUS    &mt RSHFT MINUS  &mt RCTRL EQUAL  &mt RC(LALT) PRCNT
             >;
         };
 
