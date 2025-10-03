@@ -557,10 +557,10 @@
         sym {
             display-name = "symbol";
             bindings = <
-        &kp LT    &kp LBKT   &none     &kp RBKT   &kp GT       &kp LT     &kp LBKT   &none     &kp RBKT   &kp GT
-        &kp LBRC  &kp LPAR   &none     &kp RPAR   &kp RBRC     &kp LBRC   &kp LPAR   &none     &kp RPAR   &kp RBRC
-&trans  &kp SEMI  &kp GRAVE  &none     &kp PIPE   &kp AT       &kp AT     &kp PIPE   &none     &kp GRAVE  &kp SEMI  &trans
-                             &kp SEMI  &kp COLON  &kp UNDER    &kp UNDER  &kp COLON  &kp SEMI
+        &kp LT    &kp LBKT   &none   &kp RBKT   &kp GT       &kp LT     &kp LBKT   &none   &kp RBKT   &kp GT
+        &kp LBRC  &kp LPAR   &none   &kp RPAR   &kp RBRC     &kp LBRC   &kp LPAR   &none   &kp RPAR   &kp RBRC
+&trans  &kp SEMI  &kp GRAVE  &none   &kp PIPE   &kp BSLH     &kp BSLH   &kp PIPE   &none   &kp GRAVE  &kp SEMI  &trans
+                             &kp AT  &kp COLON  &kp UNDER    &kp UNDER  &kp COLON  &kp AT
             >;
         };
 
