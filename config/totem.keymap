@@ -17,6 +17,7 @@
 
 &caps_word {
     /delete-property/ ignore-numbers;
+
     continue-list = <BACKSPACE DELETE ENTER MINUS UNDERSCORE>;
 };
 
@@ -496,7 +497,6 @@
 
         base {
             display-name = "base";
-
             bindings = <
        &kp Q        &kp W        &hll 3 F   &kp P            &kp B            &kp J          &kp L           &hll 3 U   &kp Y        &as SQT
        &hml LGUI A  &hml LALT R  &kp S      &hll 1 T         &kp G            &kp M          &hlr 2 N        &kp E      &hmr LALT I  &hmr RGUI O
@@ -507,29 +507,26 @@
 
         nav {
             display-name = "navigation";
-
             bindings = <
-       &none     &none     &none  &none            &none             &kp HOME          &kp PG_DN            &kp PG_UP  &kp END    &none
-       &kp LGUI  &kp LALT  &none  &trans           &none             &kp LEFT          &kp DOWN             &kp UP     &kp RIGHT  &none
-&none  &none     &none     &none  &none            &none             &kp INS           &mt PSCRN LC(PSCRN)  &none      &none      &none  &none
-                           &none  &mt LCTRL COLON  &mt LSHFT SEMI    &mt RSHFT MINUS   &mt RCTRL UNDER      &none
+       &none     &none           &none      &none            &none              &kp HOME         &kp PG_DN            &kp PG_UP  &kp END    &none
+       &kp LGUI  &hml LALT SEMI  &kp COLON  &trans           &none              &kp LEFT         &kp DOWN             &kp UP     &kp RIGHT  &none
+&none  &none     &none           &none      &none            &none              &kp INS          &mt PSCRN LC(PSCRN)  &none      &none      &none  &none
+                                 &none      &mt LCTRL UNDER  &mt LSHFT MINUS    &mt RSHFT MINUS  &mt RCTRL UNDER      &none
             >;
         };
 
         num {
             display-name = "number";
-
             bindings = <
-       &none   &none     &kp PLUS  &kp EQUAL        &none              &none           &none            &none  &none     &none
-       &as_1p  &as N2    &as N3    &as N4           &as N5             &none           &trans           &none  &kp LALT  &kp RGUI
-&none  &as N6  &as N7    &as N8    &as_9g           &as_0b             &none           &none            &none  &none     &none     &none
-                         &none     &mt LCTRL UNDER  &mt LSHFT MINUS    &mt LSHFT SEMI  &mt LCTRL COLON  &none
+       &none   &none   &kp PLUS  &kp EQUAL        &none              &none            &none            &none      &none           &none
+       &as_1p  &as N2  &as N3    &as N4           &as N5             &none            &trans           &kp COLON  &hml LALT SEMI  &kp RGUI
+&none  &as N6  &as N7  &as N8    &as_9g           &as_0b             &none            &none            &none      &none           &none     &none
+                       &none     &mt LCTRL UNDER  &mt LSHFT MINUS    &mt LSHFT MINUS  &mt LCTRL UNDER  &none
             >;
         };
 
         fun {
             display-name = "fun";
-
             bindings = <
        &kp F11  &kp F12  &kp F13  &kp F14  &kp F15    &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4
        &kp F1   &kp F2   &kp F3   &kp F4   &kp F5     &kp K_PREV    &kp K_VOL_DN  &kp K_VOL_UP  &kp K_NEXT    &none
