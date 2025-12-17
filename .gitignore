@@ -1,0 +1,44 @@
+# Build artifacts
+build/
+*.uf2
+
+# Firmware files (optional - uncomment if you don't want to track compiled firmware)
+# firmware/
+
+# Zephyr build system
+.west/
+zephyr/.west/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+
+# IDE and Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+*.bak
+*.cache
+
+# Node modules (if using any JS tools)
+node_modules/
+
+# OS generated files
+Thumbs.db
+.DS_Store
+._*

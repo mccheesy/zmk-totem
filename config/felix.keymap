@@ -1,15 +1,3 @@
-//
-//                                                        ▀▀▀▀▀     ▀▀▀▀▀          ▀▀█▀▀
-//                                                        ▄▀▀▀▄  ▄  ▄▀▀▀▄  ▄  ▄▀▀▀▄  █  ▄▀▀▀▄
-//                                                        █   █  █  █   █  █  █   █  █  █   █
-//                                                         ▀▀▀   █   ▀▀▀   █   ▀▀▀   ▀   ▀▀▀
-//                                                               █      ▄▄▄█▄▄▄    █   █
-//                                                               ▀      █  █  █     █▄█
-//                                                             ▀▀▀▀▀    █  █  █      ▀
-//                                                                      ▀  ▀  ▀
-//
-// ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
-
 #include <dt-bindings/zmk/mouse.h>
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/bt.h>
@@ -99,6 +87,15 @@
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
 
+        mm_cs: mod_morph_colon_semi {
+            display-name = "Colon-Semi";
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp COLON>, <&kp SEMI>;
+
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
         mm_de: mod_morph_dot_excl {
             display-name = "Period-Exclamation Mark";
             compatible = "zmk,behavior-mod-morph";
@@ -160,6 +157,17 @@
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             bindings = <&kp>, <&mm_cq>;
+
+            tapping-term-ms = <150>;
+            quick-tap-ms = <0>;
+            flavor = "tap-preferred";
+        };
+
+        ht_cs: hold_tap_colon_semi {
+            display-name = "Colon-Semi (Hold-Tap)";
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            bindings = <&kp>, <&mm_cs>;
 
             tapping-term-ms = <150>;
             quick-tap-ms = <0>;
@@ -257,6 +265,18 @@
                 <&macro_pause_for_release>,
                 <&macro_release>,
                 <&ht_cq QMARK 0>;
+        };
+
+        as_cs: autoshift_colon_semi {
+            display-name = "Colon-Semi (Autoshift)";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_press>,
+                <&ht_cs SEMI 0>,
+                <&macro_pause_for_release>,
+                <&macro_release>,
+                <&ht_cs SEMI 0>;
         };
 
         as_de: autoshift_dot_excl {
@@ -498,10 +518,11 @@
             display-name = "base";
 
             bindings = <
-       &kp Q        &kp W        &hll 3 F   &kp P            &kp B            &kp J          &kp L           &hll 3 U   &kp Y        &as SQT
-       &hml LGUI A  &hml LALT R  &kp S      &hll 1 T         &kp G            &kp M          &hlr 2 N        &kp E      &hmr LALT I  &hmr RGUI O
-&kp Q  &kp Z        &kp X        &kp C      &kp D            &kp V            &kp K          &kp H           &as_cq     &as_de       &as_ft       &as SQT
-                                 &lt 3 ESC  &mt LCTRL SPACE  &mt LSHFT TAB    &mt RSHFT RET  &mt RCTRL BSPC  &lt 3 DEL
+&trans  &trans  &trans  &trans  &trans                  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans                  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans                  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
             >;
         };
 
@@ -509,10 +530,11 @@
             display-name = "navigation";
 
             bindings = <
-       &none     &none     &none  &none            &none             &kp HOME          &kp PG_DN            &kp PG_UP  &kp END    &none
-       &kp LGUI  &kp LALT  &none  &none            &none             &kp LEFT          &kp DOWN             &kp UP     &kp RIGHT  &none
-&none  &none     &none     &none  &none            &none             &kp INS           &mt PSCRN LC(PSCRN)  &none      &none      &none  &none
-                           &none  &mt LCTRL COLON  &mt LSHFT SEMI    &mt RSHFT MINUS   &mt RCTRL UNDER      &none
+&trans  &trans  &trans  &trans  &trans                  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans                  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans                  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
             >;
         };
 
@@ -520,10 +542,11 @@
             display-name = "number";
 
             bindings = <
-       &none   &none     &kp PLUS  &kp EQUAL        &none              &none           &none            &none  &none     &none
-       &as_1p  &as N2    &as N3    &as N4           &as N5             &none           &trans           &none  &kp LALT  &kp RGUI
-&none  &as N6  &as N7    &as N8    &as_9g           &as_0b             &none           &none            &none  &none     &none     &none
-                         &none     &mt LCTRL UNDER  &mt LSHFT MINUS    &mt LSHFT SEMI  &mt LCTRL COLON  &none
+&trans  &trans  &trans  &trans  &trans                  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans                  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans                  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
             >;
         };
 
@@ -531,10 +554,11 @@
             display-name = "fun";
 
             bindings = <
-       &kp F11  &kp F12  &kp F13  &kp F14  &kp F15    &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4
-       &kp F1   &kp F2   &kp F3   &kp F4   &kp F5     &kp K_PREV    &kp K_VOL_DN  &kp K_VOL_UP  &kp K_NEXT    &none
-&none  &kp F6   &kp F7   &kp F8   &kp F9   &kp F10    &out OUT_TOG  &kp K_PP      &kp K_STOP    &kp K_EJECT   &none         &none
-                         &none    &none    &none      &none         &none         &none
+&trans  &trans  &trans  &trans  &trans                  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans                  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans                  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
             >;
         };
     };
