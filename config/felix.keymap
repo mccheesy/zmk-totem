@@ -512,11 +512,11 @@
         base {
             display-name = "base";
             bindings = <
-&kp F1     &kp F2    &kp F3  &kp F4     &kp F5            &kp F6                                             &kp F7          &kp F8            &kp F9    &kp F10   &kp F11   &kp F12
-&kp GRAVE  &kp Q     &kp W   &kp F      &kp P             &kp B                                              &kp J           &kp L             &kp U     &kp Y     &as APOS  &as BSLH
-&as_cs     &kp A     &kp R   &kp S      &hll 1 T          &kp G                                              &kp M           &hlr 2 N          &kp E     &kp I     &kp O     &as_cs
-&as LBKT   &kp Z     &kp X   &kp C      &kp D             &kp V            &as_ll             &as_rg         &kp K           &kp H             &as_cq    &as_de    &as_ft    &as RBKT
-&kp LEFT   &kp DOWN  &kp UP  &kp RIGHT  &mt LC(LALT) ESC  &mt LCTRL SPACE  &mt LSHFT TAB      &mt RSHFT RET  &mt RCTRL BSPC  &mt RC(LALT) DEL  &kp LEFT  &kp DOWN  &kp UP    &kp RIGHT
+&kp F1     &kp F2       &kp F3       &kp F4     &kp F5            &kp F6                                             &kp F7          &kp F8            &kp F9    &kp F10      &kp F11      &kp F12
+&kp GRAVE  &kp Q        &kp W        &kp F      &kp P             &kp B                                              &kp J           &kp L             &kp U     &kp Y        &as APOS     &as BSLH
+&as_cs     &hml LGUI A  &hml LALT R  &kp S      &hll 1 T          &kp G                                              &kp M           &hlr 2 N          &kp E     &hmr LALT I  &hmr O RGUI  &as_cs
+&as LBKT   &kp Z        &kp X        &kp C      &kp D             &kp V            &as_ll             &as_rg         &kp K           &kp H             &as_cq    &as_de       &as_ft       &as RBKT
+&kp LEFT   &kp DOWN     &kp UP       &kp RIGHT  &mt LC(LALT) ESC  &mt LCTRL SPACE  &mt LSHFT TAB      &mt RSHFT RET  &mt RCTRL BSPC  &mt RC(LALT) DEL  &kp LEFT  &kp DOWN     &kp UP       &kp RIGHT
             >;
         };
 
@@ -561,7 +561,6 @@
 &kp EQUAL  &kp G     &kp A     &kp S          &kp D         &kp F                                              &kp H           &kp J         &kp K      &kp L     &kp SEMI  &kp APOS
 &kp COMMA  &kp B     &kp Z     &kp X          &kp C         &kp V            &kp M              &kp RGUI       &kp N           &kp M         &kp COMMA  &kp DOT   &kp FSLH  &kp BSLH
 &kp DOT    &kp LBKT  &kp RBKT  &mt LGUI BSPC  &mt LALT ESC  &mt LCTRL SPACE  &mt LSHFT TAB      &mt RSHFT RET  &mt RCTRL BSPC  &mt LALT DEL  &kp LEFT   &kp DOWN  &kp UP    &kp RIGHT
-&trans     &trans    &trans    &trans         &trans        &trans           &trans             &trans         &trans          &trans        &trans     &trans    &trans    &trans
             >;
         };
 
@@ -573,7 +572,6 @@
 &kp EQUAL  &kp H      &kp J    &kp K          &kp L         &kp SEMI                                      &kp H      &kp J    &kp K          &kp L         &kp SEMI         &kp EQUAL
 &kp LBKT   &kp N      &kp M    &kp COMMA      &kp DOT       &kp FSLH         &kp DEL            &kp LBKT  &kp N      &kp M    &kp COMMA      &kp DOT       &kp FSLH         &kp DEL
 &kp RBKT   &kp COMMA  &kp DOT  &mt LGUI BSPC  &mt LALT ESC  &mt LCTRL SPACE  &mt LSHFT TAB      &kp RBKT  &kp COMMA  &kp DOT  &mt LGUI BSPC  &mt LALT ESC  &mt LCTRL SPACE  &mt LSHFT TAB
-&trans     &trans     &trans   &trans         &trans        &trans           &trans             &trans    &trans     &trans   &trans         &trans        &trans           &trans
             >;
         };
     };
