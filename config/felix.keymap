@@ -534,11 +534,11 @@
         num {
             display-name = "number";
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans                                                 &trans           &trans  &trans     &trans           &trans         &trans
-&trans  &trans  &trans  &trans  &trans  &trans                                                 &trans           &trans  &trans     &trans           &trans         &trans
-&trans  &as_1p  &as N2  &as N3  &as N4  &as N5                                                 &trans           &trans  &kp COLON  &hmr LALT GRAVE  &mt RGUI SEMI  &trans
-&trans  &as N6  &as N7  &as N8  &as_9g  &as_0b           &trans               &trans           &trans           &trans  &trans     &trans           &trans         &trans
-&trans  &trans  &trans  &trans  &trans  &mt LCTRL UNDER  &mt LSHFT MINUS      &mt RSHFT MINUS  &mt RCTRL UNDER  &trans  &trans     &trans           &trans         &trans
+&trans  &trans  &trans    &trans    &trans     &trans                                                 &trans           &trans  &trans     &trans           &trans         &trans
+&trans  &trans  &kp FSLH  &kp PLUS  &kp EQUAL  &trans                                                 &trans           &trans  &trans     &trans           &trans         &trans
+&trans  &as_1p  &as N2    &as N3    &as N4     &as N5                                                 &trans           &trans  &kp COLON  &hmr LALT GRAVE  &mt RGUI SEMI  &trans
+&trans  &as N6  &as N7    &as N8    &as_9g     &as_0b           &trans               &trans           &trans           &trans  &trans     &trans           &trans         &trans
+&trans  &trans  &trans    &trans    &trans     &mt LCTRL UNDER  &mt LSHFT MINUS      &mt RSHFT MINUS  &mt RCTRL UNDER  &trans  &trans     &trans           &trans         &trans
             >;
         };
 
