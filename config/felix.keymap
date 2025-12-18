@@ -512,33 +512,33 @@
         base {
             display-name = "base";
             bindings = <
-&kp F1     &kp F2       &kp F3       &kp F4     &kp F5            &kp F6                                             &kp F7          &kp F8            &kp F9    &kp F10      &kp F11      &kp F12
-&kp GRAVE  &kp Q        &kp W        &kp F      &kp P             &kp B                                              &kp J           &kp L             &kp U     &kp Y        &as APOS     &as BSLH
-&as_cs     &hml LGUI A  &hml LALT R  &kp S      &hll 1 T          &kp G                                              &kp M           &hlr 2 N          &kp E     &hmr LALT I  &hmr RGUI O  &as_cs
-&as LBKT   &kp Z        &kp X        &kp C      &kp D             &kp V            &as_ll             &as_rg         &kp K           &kp H             &as_cq    &as_de       &as_ft       &as RBKT
-&kp LEFT   &kp DOWN     &kp UP       &kp RIGHT  &mt LC(LALT) ESC  &mt LCTRL SPACE  &mt LSHFT TAB      &mt RSHFT RET  &mt RCTRL BSPC  &mt RC(LALT) DEL  &kp LEFT  &kp DOWN     &kp UP       &kp RIGHT
+&kp F1               &kp F2         &kp F3          &kp F4            &kp F5           &kp F6                                 &kp F7         &kp F8          &kp F9            &kp F10         &kp F11        &kp F12
+&kp TAB              &kp Q          &kp W           &kp F             &kp P            &kp B                                  &kp J          &kp L           &kp U             &kp Y           &as APOS       &as BSLH
+&kp ESC              &hml LGUI A    &hml LALT R     &kp S             &hll 1 T         &kp G                                  &kp M          &hlr 2 N        &kp E             &hmr LALT I     &hmr RGUI O    &as SEMI
+&sk LSHFT            &kp Z          &kp X           &kp C             &kp D            &kp V          &as LBKT      &as RBKT  &kp K          &kp H           &as_cq            &as_de          &as_ft         &sk RSHFT
+&mt PSCRN LC(PSCRN)  &mt END PG_DN  &mt HOME PG_UP  &mt LC(LALT) ESC  &mt LCTRL SPACE  &mt LSHFT TAB  &as_ll        &as_rg    &mt RSHFT RET  &mt RCTRL BSPC  &mt RC(LALT) DEL  &mt HOME PG_UP  &mt END PG_DN  &mt PSCRN RC(PSCRN)
             >;
         };
 
         nav {
             display-name = "navigation";
             bindings = <
-&trans  &trans          &trans           &trans     &trans  &trans                                                 &trans           &trans         &trans     &trans     &trans   &trans
-&trans  &trans          &trans           &trans     &trans  &trans                                                 &kp PSCRN        &kp RC(PSCRN)  &trans     &trans     &trans   &trans
-&trans  &hml LGUI SEMI  &hml LALT GRAVE  &kp COLON  &trans  &trans                                                 &kp LEFT         &kp DOWN       &kp UP     &kp RIGHT  &trans   &trans
-&trans  &trans          &trans           &trans     &trans  &trans           &trans               &trans           &kp HOME         &kp PG_DN      &kp PG_UP  &kp END    &kp INS  &trans
-&trans  &trans          &trans           &trans     &trans  &mt LCTRL UNDER  &mt LSHFT MINUS      &mt RSHFT MINUS  &mt RCTRL UNDER  &trans         &trans     &trans     &trans   &trans
+&none  &none           &none            &none      &none            &none                              &none            &none            &none      &none      &none    &none
+&none  &none           &none            &as BSLH   &none            &none                              &kp PSCRN        &kp RC(PSCRN)    &none      &none      &none    &none
+&none  &hml LGUI SEMI  &hml LALT GRAVE  &kp COLON  &none            &none                              &kp LEFT         &kp DOWN         &kp UP     &kp RIGHT  &none    &none
+&none  &none           &none            &none      &none            &none            &none      &none  &kp HOME         &kp PG_DN        &kp PG_UP  &kp END    &kp INS  &none
+&none  &none           &none            &none      &mt LCTRL UNDER  &mt LSHFT MINUS  &none      &none  &mt RSHFT MINUS  &mt RCTRL UNDER  &none      &none      &none    &none
             >;
         };
 
         num {
             display-name = "number";
             bindings = <
-&trans  &trans  &trans    &trans    &trans     &trans                                                 &trans           &trans  &trans     &trans           &trans         &trans
-&trans  &trans  &kp FSLH  &kp PLUS  &kp EQUAL  &trans                                                 &trans           &trans  &trans     &trans           &trans         &trans
-&trans  &as_1p  &as N2    &as N3    &as N4     &as N5                                                 &trans           &trans  &kp COLON  &hmr LALT GRAVE  &mt RGUI SEMI  &trans
-&trans  &as N6  &as N7    &as N8    &as_9g     &as_0b           &trans               &trans           &trans           &trans  &trans     &trans           &trans         &trans
-&trans  &trans  &trans    &trans    &trans     &mt LCTRL UNDER  &mt LSHFT MINUS      &mt RSHFT MINUS  &mt RCTRL UNDER  &trans  &trans     &trans           &trans         &trans
+&none  &none   &none     &none     &none            &none                              &none            &none            &none      &none            &none          &none
+&none  &none   &kp FSLH  &kp PLUS  &kp EQUAL        &none                              &none            &none            &as BSLH   &none            &none          &none
+&none  &as_1p  &as N2    &as N3    &as N4           &as N5                             &none            &none            &kp COLON  &hmr LALT GRAVE  &mt RGUI SEMI  &none
+&none  &as N6  &as N7    &as N8    &as_9g           &as_0b           &none      &none  &none            &none            &none      &none            &none          &none
+&none  &none   &none     &none     &mt LCTRL SPACE  &mt LSHFT MINUS  &none      &none  &mt RSHFT MINUS  &mt RCTRL UNDER  &none      &none            &none          &none
             >;
         };
 
