@@ -514,7 +514,7 @@
             bindings = <
 &kp F1     &kp F2       &kp F3       &kp F4     &kp F5            &kp F6                                             &kp F7          &kp F8            &kp F9    &kp F10      &kp F11      &kp F12
 &kp GRAVE  &kp Q        &kp W        &kp F      &kp P             &kp B                                              &kp J           &kp L             &kp U     &kp Y        &as APOS     &as BSLH
-&as_cs     &hml LGUI A  &hml LALT R  &kp S      &hll 1 T          &kp G                                              &kp M           &hlr 2 N          &kp E     &hmr LALT I  &hmr O RGUI  &as_cs
+&as_cs     &hml LGUI A  &hml LALT R  &kp S      &hll 1 T          &kp G                                              &kp M           &hlr 2 N          &kp E     &hmr LALT I  &hmr RGUI O  &as_cs
 &as LBKT   &kp Z        &kp X        &kp C      &kp D             &kp V            &as_ll             &as_rg         &kp K           &kp H             &as_cq    &as_de       &as_ft       &as RBKT
 &kp LEFT   &kp DOWN     &kp UP       &kp RIGHT  &mt LC(LALT) ESC  &mt LCTRL SPACE  &mt LSHFT TAB      &mt RSHFT RET  &mt RCTRL BSPC  &mt RC(LALT) DEL  &kp LEFT  &kp DOWN     &kp UP       &kp RIGHT
             >;
