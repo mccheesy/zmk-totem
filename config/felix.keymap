@@ -423,22 +423,12 @@
 
         btctrl_l {
             bindings = <&sl 3>;
-            key-positions = <3 4 5>;
+            key-positions = <3 2>;
         };
 
         btctrl_r {
             bindings = <&sl 3>;
-            key-positions = <6 7 8>;
-        };
-
-        caps_lock {
-            bindings = <&kp CAPS>;
-            key-positions = <9 2>;
-        };
-
-        caps_word {
-            bindings = <&caps_word>;
-            key-positions = <4 7>;
+            key-positions = <8 9>;
         };
 
         qu {
@@ -504,6 +494,26 @@
             bindings = <&kp RG(SPACE)>;
             key-positions = <31 33>;
         };
+
+        lpipe {
+            bindings = <&kp PIPE>;
+            key-positions = <29 41>;
+        };
+
+        rpipe {
+            bindings = <&kp PIPE>;
+            key-positions = <30 44>;
+        };
+
+        lbslh {
+            bindings = <&kp BSLH>;
+            key-positions = <28 40>;
+        };
+
+        rbslh {
+            bindings = <&kp BSLH>;
+            key-positions = <31 45>;
+        };
     };
 
     keymap {
@@ -512,33 +522,33 @@
         base {
             display-name = "base";
             bindings = <
-&kp F1               &kp F2         &kp F3          &kp F4            &kp F5           &kp F6                                 &kp F7         &kp F8          &kp F9            &kp F10         &kp F11        &kp F12
-&kp TAB              &kp Q          &kp W           &kp F             &kp P            &kp B                                  &kp J          &kp L           &kp U             &kp Y           &as APOS       &as BSLH
-&kp ESC              &hml LGUI A    &hml LALT R     &kp S             &hll 1 T         &kp G                                  &kp M          &hlr 2 N        &kp E             &hmr LALT I     &hmr RGUI O    &as SEMI
-&sk LSHFT            &kp Z          &kp X           &kp C             &kp D            &kp V          &as LBKT      &as RBKT  &kp K          &kp H           &as_cq            &as_de          &as_ft         &sk RSHFT
-&mt PSCRN LC(PSCRN)  &mt END PG_DN  &mt HOME PG_UP  &mt LC(LALT) ESC  &mt LCTRL SPACE  &mt LSHFT TAB  &as_ll        &as_rg    &mt RSHFT RET  &mt RCTRL BSPC  &mt RC(LALT) DEL  &mt HOME PG_UP  &mt END PG_DN  &mt PSCRN RC(PSCRN)
+&kp F1               &kp F2         &kp F3          &kp F4  &kp F5            &kp F6                                             &kp F7          &kp F8            &kp F9  &kp F10         &kp F11        &kp F12
+&kp TAB              &kp Q          &kp W           &kp F   &kp P             &kp B                                              &kp J           &kp L             &kp U   &kp Y           &as APOS       &as BSLH
+&kp ESC              &hml LGUI A    &hml LALT R     &kp S   &hll 1 T          &kp G                                              &kp M           &hlr 2 N          &kp E   &hmr LALT I     &hmr RGUI O    &as SEMI
+&sk LSHFT            &kp Z          &kp X           &kp C   &kp D             &kp V            &as LBKT           &as RBKT       &kp K           &kp H             &as_cq  &as_de          &as_ft         &sk RSHFT
+&mt PSCRN LC(PSCRN)  &mt END PG_DN  &mt HOME PG_UP  &as_ll  &mt LC(LALT) ESC  &mt LCTRL SPACE  &mt LSHFT TAB      &mt LSHFT RET  &mt RCTRL BSPC  &mt RC(LALT) DEL  &as_rg  &mt HOME PG_UP  &mt END PG_DN  &mt PSCRN RC(PSCRN)
             >;
         };
 
         nav {
             display-name = "navigation";
             bindings = <
-&none  &none           &none            &none      &none            &none                              &none            &none            &none      &none      &none    &none
-&none  &none           &none            &as BSLH   &none            &none                              &kp PSCRN        &kp RC(PSCRN)    &none      &none      &none    &none
-&none  &hml LGUI SEMI  &hml LALT GRAVE  &kp COLON  &none            &none                              &kp LEFT         &kp DOWN         &kp UP     &kp RIGHT  &none    &none
-&none  &none           &none            &none      &none            &none            &none      &none  &kp HOME         &kp PG_DN        &kp PG_UP  &kp END    &kp INS  &none
-&none  &none           &none            &none      &mt LCTRL UNDER  &mt LSHFT MINUS  &none      &none  &mt RSHFT MINUS  &mt RCTRL UNDER  &none      &none      &none    &none
+&none  &none           &none            &none      &none  &none                                                  &none            &none          &none      &none      &none    &none
+&none  &none           &none            &as BSLH   &none  &none                                                  &kp PSCRN        &kp RC(PSCRN)  &none      &none      &none    &none
+&none  &hml LGUI SEMI  &hml LALT GRAVE  &kp COLON  &none  &none                                                  &kp LEFT         &kp DOWN       &kp UP     &kp RIGHT  &none    &none
+&none  &none           &none            &kp PIPE   &none  &none            &none                &none            &kp HOME         &kp PG_DN      &kp PG_UP  &kp END    &kp INS  &none
+&none  &none           &none            &none      &none  &mt LCTRL UNDER  &mt LSHFT MINUS      &mt RSHFT MINUS  &mt RCTRL UNDER  &none          &none      &none      &none    &none
             >;
         };
 
         num {
             display-name = "number";
             bindings = <
-&none  &none   &none     &none     &none            &none                              &none            &none            &none      &none            &none          &none
-&none  &none   &kp FSLH  &kp PLUS  &kp EQUAL        &none                              &none            &none            &as BSLH   &none            &none          &none
-&none  &as_1p  &as N2    &as N3    &as N4           &as N5                             &none            &none            &kp COLON  &hmr LALT GRAVE  &mt RGUI SEMI  &none
-&none  &as N6  &as N7    &as N8    &as_9g           &as_0b           &none      &none  &none            &none            &none      &none            &none          &none
-&none  &none   &none     &none     &mt LCTRL SPACE  &mt LSHFT MINUS  &none      &none  &mt RSHFT MINUS  &mt RCTRL UNDER  &none      &none            &none          &none
+&none  &none   &none     &none     &none      &none                                                  &none            &none  &none      &none            &none          &none
+&none  &none   &kp FSLH  &kp PLUS  &kp EQUAL  &none                                                  &none            &none  &as BSLH   &none            &none          &none
+&none  &as_1p  &as N2    &as N3    &as N4     &as N5                                                 &none            &none  &kp COLON  &hmr LALT GRAVE  &mt RGUI SEMI  &none
+&none  &as N6  &as N7    &as N8    &as_9g     &as_0b           &none                &none            &none            &none  &kp PIPE   &none            &none          &none
+&none  &none   &none     &none     &none      &mt LCTRL UNDER  &mt LSHFT MINUS      &mt RSHFT MINUS  &mt RCTRL UNDER  &none  &none      &none            &none          &none
             >;
         };
 
