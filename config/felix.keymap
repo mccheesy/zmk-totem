@@ -439,80 +439,80 @@
 
         lbrc {
             bindings = <&kp LBRC>;
-            key-positions = <14 26>;
+            key-positions = <13 25>;
             layers = <0>;
         };
 
         lbkt {
             bindings = <&kp LBKT>;
-            key-positions = <15 27>;
+            key-positions = <14 26>;
             layers = <0>;
         };
 
         lpar {
             bindings = <&kp LPAR>;
-            key-positions = <16 28>;
+            key-positions = <15 27>;
             layers = <0>;
         };
 
         lt {
             bindings = <&kp LT>;
-            key-positions = <17 29>;
+            key-positions = <16 28>;
             layers = <0>;
         };
 
         gt {
             bindings = <&kp GT>;
-            key-positions = <18 30>;
+            key-positions = <19 31>;
             layers = <0>;
         };
 
         rpar {
             bindings = <&kp RPAR>;
-            key-positions = <19 31>;
+            key-positions = <20 32>;
             layers = <0>;
         };
 
         rbkt {
             bindings = <&kp RBKT>;
-            key-positions = <20 32>;
+            key-positions = <21 33>;
             layers = <0>;
         };
 
         rbrc {
             bindings = <&kp RBRC>;
-            key-positions = <21 33>;
+            key-positions = <22 34>;
             layers = <0>;
         };
 
         launcher_l {
             bindings = <&kp LG(SPACE)>;
-            key-positions = <26 28>;
+            key-positions = <25 27>;
         };
 
         launcher_r {
             bindings = <&kp RG(SPACE)>;
-            key-positions = <31 33>;
+            key-positions = <32 34>;
         };
 
         lpipe {
             bindings = <&kp PIPE>;
-            key-positions = <29 41>;
+            key-positions = <28 40>;
         };
 
         rpipe {
             bindings = <&kp PIPE>;
-            key-positions = <30 44>;
+            key-positions = <31 45>;
         };
 
         lbslh {
             bindings = <&kp BSLH>;
-            key-positions = <28 40>;
+            key-positions = <27 39>;
         };
 
         rbslh {
             bindings = <&kp BSLH>;
-            key-positions = <31 45>;
+            key-positions = <32 46>;
         };
     };
 
@@ -522,11 +522,11 @@
         base {
             display-name = "base";
             bindings = <
-&kp F1               &kp F2         &kp F3          &kp F4  &kp F5            &kp F6                                             &kp F7          &kp F8            &kp F9  &kp F10         &kp F11        &kp F12
-&kp TAB              &kp Q          &kp W           &kp F   &kp P             &kp B                                              &kp J           &kp L             &kp U   &kp Y           &as APOS       &as BSLH
-&kp ESC              &hml LGUI A    &hml LALT R     &kp S   &hll 1 T          &kp G                                              &kp M           &hlr 2 N          &kp E   &hmr LALT I     &hmr RGUI O    &as SEMI
-&sk LSHFT            &kp Z          &kp X           &kp C   &kp D             &kp V            &as LBKT           &as RBKT       &kp K           &kp H             &as_cq  &as_de          &as_ft         &sk RSHFT
-&mt PSCRN LC(PSCRN)  &mt END PG_DN  &mt HOME PG_UP  &as_ll  &mt LC(LALT) ESC  &mt LCTRL SPACE  &mt LSHFT TAB      &mt LSHFT RET  &mt RCTRL BSPC  &mt RC(LALT) DEL  &as_rg  &mt HOME PG_UP  &mt END PG_DN  &mt PSCRN RC(PSCRN)
+&kp F1       &kp F2       &kp F3  &kp F4            &kp F5           &kp F6                           &kp F7         &kp F8          &kp F9            &kp F10    &kp F11      &kp F12
+&kp Q        &kp W        &kp F   &kp P             &kp B            &none                            &none          &kp J           &kp L             &kp U      &kp Y        &as APOS
+&hml LGUI A  &hml LALT R  &kp S   &hll 1 T          &kp G            &none                            &none          &kp M           &hlr 2 N          &kp E      &hmr LALT R  &hmr RGUI O
+&kp Z        &kp X        &kp C   &kp D             &kp V            &none          &none      &none  &none          &kp K           &kp H             &as COMMA  &as DOT      &as FSLH
+&none        &none        &none   &mt LC(LALT) ESC  &mt LCTRL SPACE  &mt LSHFT TAB  &none      &none  &mt RSHFT RET  &mt RCTRL BSPC  &mt RC(LALT) DEL  &none      &none        &none
             >;
         };
 
