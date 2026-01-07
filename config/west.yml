@@ -13,9 +13,6 @@ manifest:
       remote: zmkfirmware
       revision: v0.3
       import: app/west.yml
-    - name: prospector-zmk-module
-      remote: carrefinho
-      revision: main
     - name: zmk-tri-state
       remote: dhruvinsh
       revision: main
