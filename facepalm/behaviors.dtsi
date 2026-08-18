@@ -1,0 +1,377 @@
+// ZMK Behaviors Configuration
+&mt {
+    flavor = "balanced";
+    tapping-term-ms = <TAPPING_TERM_MS>;
+    quick-tap-ms = <QUICK_TAP_MS>;
+    require-prior-idle-ms = <REQUIRE_PRIOR_IDLE_MS>;
+};
+
+&lt {
+    flavor = "balanced";
+    tapping-term-ms = <TAPPING_TERM_MS>;
+    quick-tap-ms = <QUICK_TAP_MS>;
+    require-prior-idle-ms = <REQUIRE_PRIOR_IDLE_MS>;
+};
+
+&sk {
+    quick-release;
+};
+
+&caps_word {
+    /delete-property/ ignore-numbers;
+
+    continue-list = <BACKSPACE DELETE ENTER MINUS UNDERSCORE>;
+};
+
+// From: https://github.com/urob/zmk-config/
+// num-word, requires PR https://github.com/zmkfirmware/zmk/pull/1451
+// Adds arrows and shift to smart layer for more comfortable navigation/selection moves
+&num_word {
+    continue-list = <BSPC DEL DOT COMMA PLUS MINUS STAR FSLH EQUAL RSHFT LEFT RIGHT UP DOWN>;
+};
+
+/ {
+    behaviors {
+        /*
+        Home Row Mods
+  
+        - tap: &kp <PARAM_2>
+        - hold: &kp <PARAM_1>
+  
+        Example: &hrml LCMD T
+        */
+        /omit-if-no-ref/ hrml: hrm_left {
+            #binding-cells = <2>;
+            bindings = <&kp>, <&kp>;
+            compatible = "zmk,behavior-hold-tap";
+            flavor = "balanced";
+            hold-trigger-key-positions = <5 6 7 8 9 15 16 17 18 19 26 27 28 29 30 31 32 33 34 35 36 37>;
+            hold-trigger-on-release;
+            tapping-term-ms = <TAPPING_TERM_MS>;
+            quick-tap-ms = <QUICK_TAP_MS>;
+            require-prior-idle-ms = <REQUIRE_PRIOR_IDLE_MS>;
+        };
+  
+        /omit-if-no-ref/ hrmr: hrm_right {
+            #binding-cells = <2>;
+            bindings = <&kp>, <&kp>;
+            compatible = "zmk,behavior-hold-tap";
+            flavor = "balanced";
+            hold-trigger-key-positions = <0 1 2 3 4 10 11 12 13 14 20 21 22 23 24 25 32 33 34 35 36 37>;
+            hold-trigger-on-release;
+            tapping-term-ms = <TAPPING_TERM_MS>;
+            quick-tap-ms = <QUICK_TAP_MS>;
+            require-prior-idle-ms = <REQUIRE_PRIOR_IDLE_MS>;
+        };
+  
+        /*
+        Home Row Layers
+  
+        - hold: &mo <PARAM_1>
+        - tap: &kp <PARAM_2>
+  
+        Example: &hrll LCMD T
+        */
+        /omit-if-no-ref/ hrll: hrl_left {
+            #binding-cells = <2>;
+            bindings = <&mo>, <&kp>;
+            compatible = "zmk,behavior-hold-tap";
+            flavor = "balanced";
+            hold-trigger-key-positions = <5 6 7 8 9 15 16 17 18 19 26 27 28 29 30 31 32 33 34 35 36 37>;
+            hold-trigger-on-release;
+            tapping-term-ms = <TAPPING_TERM_MS>;
+            quick-tap-ms = <QUICK_TAP_MS>;
+            require-prior-idle-ms = <REQUIRE_PRIOR_IDLE_MS>;
+        };
+  
+        /omit-if-no-ref/ hrlr: hrl_right {
+            #binding-cells = <2>;
+            bindings = <&mo>, <&kp>;
+            compatible = "zmk,behavior-hold-tap";
+            flavor = "balanced";
+            hold-trigger-key-positions = <0 1 2 3 4 10 11 12 13 14 20 21 22 23 24 25 32 33 34 35 36 37>;
+            hold-trigger-on-release;
+            tapping-term-ms = <TAPPING_TERM_MS>;
+            quick-tap-ms = <QUICK_TAP_MS>;
+            require-prior-idle-ms = <REQUIRE_PRIOR_IDLE_MS>;
+        };
+  
+        /*
+        - tap: sticky shift
+        - double-tap: caps-word (shift + tap mod-morph)
+        - hold: shift
+  
+        From: https://github.com/urob/zmk-config/
+        */
+        /omit-if-no-ref/ smart_shift: smart_shift {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&sk RSHFT>, <&caps_word>;
+            mods = <(MOD_RSFT)>;
+        };
+  
+  
+        /*
+        - tap: num-word
+        - hold: &mo layer
+  
+        From: https://github.com/urob/zmk-config/
+        */
+        /omit-if-no-ref/ smart_num: smart_num {
+            compatible = "zmk,behavior-hold-tap";
+            flavor = "balanced";
+            tapping-term-ms = <TAPPING_TERM_MS>;
+            #binding-cells = <2>;
+            bindings = <&mo>, <&num_dance>;
+        };
+  
+        /*
+        - tap: &sl L2
+        - tap x 2: &num_word
+  
+        From: https://github.com/urob/zmk-config/
+        */
+        /omit-if-no-ref/ num_dance: num_dance {
+            compatible = "zmk,behavior-tap-dance";
+            tapping-term-ms = <TAPPING_TERM_MS>;
+            #binding-cells = <0>;
+            bindings = <&sl 1>, <&num_word 1>;
+        };
+  
+        /*
+        - tap: backspace
+        - hold: repeat backspace
+        - shift + tap: delete
+        - shift + hold: repeat delete
+  
+        From: https://zmk.dev/docs/behaviors/mod-morph#advanced-configuration
+        */
+        /omit-if-no-ref/ bkspc_del: backspace_delete {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp BACKSPACE>, <&kp DELETE>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+		/*
+		- hold: &kp
+		- tap: backspace
+		- tap x2 + hold: repeat backspace
+		- shift + tap: delete
+		- shift + tap x2 + hold: repeat delete
+		*/
+		/omit-if-no-ref/ mbsp: magic_bsp {
+			compatible = "zmk,behavior-hold-tap";
+			#binding-cells = <2>;
+			tapping-term-ms = <200>;
+			flavor = "balanced";
+			bindings = <&kp>, <&bkspc_del>;
+		};
+  
+        /*
+        - tap: reset keyboard
+        - hold: enter bootloader mode
+        */
+        /omit-if-no-ref/ rst_boot: rst_boot {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            tapping-term-ms = <500>;
+            flavor = "tap-preferred";
+            bindings = <&bootloader>, <&sys_reset>;
+        };
+
+		/*
+		- tap: &kt LALT, &kp TAB
+		- subsequent taps: &kp TAB
+		- press any other key or change layer: &kt LALT
+		*/
+		/omit-if-no-ref/ next_app: next_app {
+			compatible = "zmk,behavior-tri-state";
+			#binding-cells = <0>;
+			bindings = <&kt LALT>, <&kp TAB>, <&kt LALT>;
+		};
+
+		/*
+		- tap: &kt LS(LALT), &kp TAB
+		- subsequent taps: &kp TAB
+		- press any other key or change layer: &kt LS(LALT)
+		*/
+		/omit-if-no-ref/ prev_app: prev_app {
+			compatible = "zmk,behavior-tri-state";
+			#binding-cells = <0>;
+			bindings = <&kt LS(LALT)>, <&kp TAB>, <&kt LS(LALT)>;
+		};
+
+		/* Better shift pairs */
+        /omit-if-no-ref/ mm_cq: mod_morph_cmma_qmark {
+            display-name = "Comma-Question Mark";
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp COMMA>, <&kp QMARK>;
+
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        /omit-if-no-ref/ mm_cs: mod_morph_colon_semi {
+            compatible = "zmk,behavior-mod-morph";
+            display-name = "Comma-Question Mark";
+            #binding-cells = <0>;
+            bindings = <&kp COLON>, <&kp SEMI>;
+
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        /omit-if-no-ref/ mm_de: mod_morph_dot_excl {
+            display-name = "Period-Exclamation Mark";
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp DOT>, <&kp EXCL>;
+
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        /omit-if-no-ref/ mm_ft: mod_morph_fslh_tild {
+            display-name = "Forward Slash-Tilde";
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp FSLH>, <&kp TILDE>;
+
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        /omit-if-no-ref/ mm_gt: mod_morph_grave_tilde {
+            display-name = "Grave-Tilde";
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp GRAVE>, <&kp TILDE>;
+
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        /omit-if-no-ref/ mm_1p: mod_morph_n1_pipe {
+            display-name = "N1-Pipe";
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp N1>, <&kp PIPE>;
+
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        /omit-if-no-ref/ mm_9p: mod_morph_n9_plus {
+            display-name = "N9-Plus";
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp N9>, <&kp PLUS>;
+
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        /omit-if-no-ref/ mm_0e: mod_morph_n0_equal {
+            display-name = "N0-Equal";
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp N0>, <&kp EQUAL>;
+
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        /omit-if-no-ref/ ht_as: hold_tap_autoshift {
+            compatible = "zmk,behavior-hold-tap";
+            bindings = <&sh>, <&kp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <150>;
+            quick-tap-ms = <200>;
+            require-prior-idle-ms = <125>;
+            flavor = "tap-preferred";
+        };
+
+        /omit-if-no-ref/ ht_cq: hold_tap_cmma_qmark {
+            display-name = "Comma-Question Mark (Hold-Tap)";
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            bindings = <&kp>, <&mm_cq>;
+
+            tapping-term-ms = <150>;
+            quick-tap-ms = <0>;
+            flavor = "tap-preferred";
+        };
+
+        /omit-if-no-ref/ ht_cs: hold_tap_colon_semi {
+            compatible = "zmk,behavior-hold-tap";
+            display-name = "Comma-Question Mark (Hold-Tap)";
+            #binding-cells = <2>;
+            bindings = <&kp>, <&mm_cs>;
+
+            tapping-term-ms = <150>;
+            quick-tap-ms = <0>;
+            flavor = "tap-preferred";
+        };
+
+        /omit-if-no-ref/ ht_de: hold_tap_dot_excl {
+            display-name = "Period-Exclamation Mark (Hold-Tap)";
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            bindings = <&kp>, <&mm_de>;
+
+            tapping-term-ms = <150>;
+            quick-tap-ms = <0>;
+            flavor = "tap-preferred";
+        };
+
+        /omit-if-no-ref/ ht_ft: hold_tap_fslh_tild {
+            display-name = "Forward Slash-Tilde (Hold-Tap)";
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            bindings = <&kp>, <&mm_ft>;
+
+            tapping-term-ms = <150>;
+            quick-tap-ms = <0>;
+            flavor = "tap-preferred";
+        };
+
+        /omit-if-no-ref/ ht_gt: hold_tap_grave_tilde {
+            display-name = "Grave-Tilde (Hold-Tap)";
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            bindings = <&kp>, <&mm_gt>;
+
+            tapping-term-ms = <150>;
+            quick-tap-ms = <0>;
+            flavor = "tap-preferred";
+        };
+
+        /omit-if-no-ref/ ht_1p: hold_tap_n1_pipe {
+            display-name = "N1-Pipe (Hold-Tap)";
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            bindings = <&kp>, <&mm_1p>;
+
+            tapping-term-ms = <150>;
+            quick-tap-ms = <0>;
+            flavor = "tap-preferred";
+        };
+
+        /omit-if-no-ref/ ht_9p: hold_tap_n9_plus {
+            display-name = "N9-Plus (Hold-Tap)";
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            bindings = <&kp>, <&mm_9p>;
+
+            tapping-term-ms = <150>;
+            quick-tap-ms = <0>;
+            flavor = "tap-preferred";
+        };
+
+        /omit-if-no-ref/ ht_0e: hold_tap_n0_equal {
+            display-name = "N0-Equal (Hold-Tap)";
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            bindings = <&kp>, <&mm_0e>;
+
+            tapping-term-ms = <150>;
+            quick-tap-ms = <0>;
+            flavor = "tap-preferred";
+        };
+    };
+};

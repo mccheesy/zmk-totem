@@ -1,0 +1,155 @@
+/ {
+    combos {
+        compatible = "zmk,combos";
+
+		/* Symbols - \{[(< >]}/ */
+        fslh {
+            bindings = <&kp FSLH>;
+            key-positions = <0 10>;
+            layers = <0 1 2>;
+        };
+
+        lbrc {
+            bindings = <&kp LBRC>;
+            key-positions = <1 11>;
+            layers = <0 1 2>;
+        };
+
+        lbkt {
+            bindings = <&kp LBKT>;
+            key-positions = <2 12>;
+            layers = <0 1 2>;
+        };
+
+        lpar {
+            bindings = <&kp LPAR>;
+            key-positions = <3 13>;
+            layers = <0 1 2>;
+        };
+
+        lt {
+            bindings = <&kp LT>;
+            key-positions = <4 14>;
+            layers = <0 1 2>;
+        };
+
+        gt {
+            bindings = <&kp GT>;
+            key-positions = <5 15>;
+            layers = <0 1 2>;
+        };
+
+        rpar {
+            bindings = <&kp RPAR>;
+            key-positions = <6 16>;
+            layers = <0 1 2>;
+        };
+
+        rbkt {
+            bindings = <&kp RBKT>;
+            key-positions = <7 17>;
+            layers = <0 1 2>;
+        };
+
+        rbrc {
+            bindings = <&kp RBRC>;
+            key-positions = <8 18>;
+            layers = <0 1 2>;
+        };
+
+		bslh {
+			bindings = <&kp BSLH>;
+			key-positions = <9 19>;
+			layers = <0 1 2>;
+		};
+
+		/* Left-hand symbols emag layer */
+        gt {
+            bindings = <&kp GT>;
+            key-positions = <4 14>;
+            layers = <3>;
+        };
+
+        rpar {
+            bindings = <&kp RPAR>;
+            key-positions = <3 13>;
+            layers = <3>;
+        };
+
+        rbkt {
+            bindings = <&kp RBKT>;
+            key-positions = <2 12>;
+            layers = <3>;
+        };
+
+        rbrc {
+            bindings = <&kp RBRC>;
+            key-positions = <1 11>;
+            layers = <3>;
+        };
+
+		fslh {
+			bindings = <&kp FSLH>;
+			key-positions = <0 10>;
+			layers = <3>;
+		};
+
+		/* Launcher - home row middle + ring */
+        lchl {
+            bindings = <&kp LG(SPACE)>;
+            key-positions = <11 13>;
+            layers = <0 1 2 3>;
+        };
+
+        lchr {
+            bindings = <&kp RG(SPACE)>;
+            key-positions = <16 18>;
+            layers = <0 1 2 3>;
+        };
+
+		/* Layer toggles */
+        base {
+            bindings = <&to 0>;
+            key-positions = <0 1>;
+        };
+
+        alt {
+            bindings = <&to 1>;
+            key-positions = <1 2>;
+        };
+
+        game {
+            bindings = <&to 2>;
+            key-positions = <2 3>;
+        };
+
+        emag {
+            bindings = <&to 3>;
+            key-positions = <3 4>;
+        };
+
+        num_l {
+            bindings = <&to 4>;
+            key-positions = <11 12 13>;
+            layers = <0 1 2 3>;
+        };
+
+        num_r {
+            bindings = <&to 4>;
+            key-positions = <16 17 18>;
+            layers = <0 1 2 3>;
+        };
+
+		fun_l {
+			bindings = <&sl 6>;
+			key-positions = <22 23 24>;
+			layers = <0 1 2 3>;
+		}
+
+		fun_r {
+			bindings = <&sl 6>;
+			key-positions = <27 28 29>;
+			layers = <0 1 2 3>;
+		}
+    };
+};
