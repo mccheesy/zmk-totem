@@ -2,25 +2,28 @@ manifest:
   remotes:
     - name: zmkfirmware
       url-base: https://github.com/zmkfirmware
-    - name: bildermankawasaki
-      url-base: https://github.com/bildermankawasaki
-    - name: dhruvinsh
-      url-base: https://github.com/dhruvinsh
-    - name: m165437
-      url-base: https://github.com/M165437
+    - name: mccheesy
+      url-base: https://github.com/mccheesy
+    - name: urob
+      url-base: https://github.com/urob
+
   projects:
     - name: zmk
       remote: zmkfirmware
-      revision: main
       import: app/west.yml
+      revision: main
+
     - name: zmk-keyboard-totem
-      remote: bildermankawasaki
+      remote: mccheesy
       revision: main
+
+    - name: zmk-auto-layer
+      remote: urob
+      revision: main
+
     - name: zmk-tri-state
-      remote: dhruvinsh
+      remote: urob
       revision: main
-    - name: nice-view-gem
-      remote: m165437
-      revision: main
+
   self:
     path: config

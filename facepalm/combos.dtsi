@@ -1,0 +1,182 @@
+/* Copied (modified) from https://github.com/caksoylar/zmk-config */
+#define COMBO(NAME, BINDINGS, KEYPOS, LAYERS, TERM, QUICKTAP) \
+	combo_##NAME { \
+		timeout-ms = <TERM>; \
+		bindings = <BINDINGS>; \
+		key-positions = <KEYPOS>; \
+		layers = <LAYERS>; \
+		require-prior-idle-ms = <QUICKTAP>; \
+	};
+
+/ {
+    combos {
+        compatible = "zmk,combos";
+
+		/* Symbols - top row */
+        bslh {
+            bindings = <&kp BSLH>;
+            key-positions = <0 10>;
+            layers = <0>;
+        };
+
+        lbrc {
+            bindings = <&kp LBRC>;
+            key-positions = <1 11>;
+            layers = <0>;
+        };
+
+        lbkt {
+            bindings = <&kp LBKT>;
+            key-positions = <2 12>;
+            layers = <0>;
+        };
+
+        lpar {
+            bindings = <&kp LPAR>;
+            key-positions = <3 13>;
+            layers = <0>;
+        };
+
+        lt {
+            bindings = <&kp LT>;
+            key-positions = <4 14>;
+            layers = <0>;
+        };
+
+        gt {
+            bindings = <&kp GT>;
+            key-positions = <5 15>;
+            layers = <0>;
+        };
+
+        rpar {
+            bindings = <&kp RPAR>;
+            key-positions = <6 16>;
+            layers = <0>;
+        };
+
+        rbkt {
+            bindings = <&kp RBKT>;
+            key-positions = <7 17>;
+            layers = <0>;
+        };
+
+        rbrc {
+            bindings = <&kp RBRC>;
+            key-positions = <8 18>;
+            layers = <0>;
+        };
+
+		fslh {
+			bindings = <&kp FSLH>;
+			key-positions = <9 19>;
+			layers = <0>;
+		};
+
+		/* Commands - bottom row */
+		escl {
+			bindings = <&kp ESC>;
+			key-positions = <10 21>;
+			layers = <0>;
+		};
+
+        bspl {
+            bindings = <&kp BSPC>;
+            key-positions = <11 22>;
+			layers = <0>;
+        };
+
+        dell {
+            bindings = <&kp DEL>;
+            key-positions = <12 23>;
+			layers = <0>;
+        };
+
+		tabl {
+			bindings = <&kp TAB>;
+			key-positions = <13 24>;
+			layers = <0>;
+		};
+
+		retl {
+			bindings = <&kp RET>;
+			key-positions = <14 25>;
+			layers = <0>;
+		};
+
+		retr {
+			bindings = <&kp RET>;
+			key-positions = <15 26>;
+			layers = <0>;
+		};
+
+		tabr {
+			bindings = <&kp TAB>;
+			key-positions = <16 27>;
+			layers = <0>;
+		};
+
+        delr {
+            bindings = <&kp DEL>;
+            key-positions = <17 28>;
+            layers = <0>;
+        };
+
+        bspr {
+            bindings = <&kp BSPC>;
+            key-positions = <18 29>;
+            layers = <0>;
+        };
+
+        escr {
+            bindings = <&kp ESC>;
+            key-positions = <19 30>;
+            layers = <0>;
+        };
+
+		/* Launcher - middle row */
+        lchl {
+            bindings = <&kp LG(SPACE)>;
+            key-positions = <11 13>;
+            layers = <0>;
+        };
+
+        lchr {
+            bindings = <&kp RG(SPACE)>;
+            key-positions = <16 18>;
+            layers = <0>;
+        };
+
+/* Layers
+        l1 {
+            bindings = <&to 0>;
+            key-positions = <22 23 24>;
+            layers = <4 5 6>;
+        };
+
+        alt {
+            bindings = <&to 4>;
+            key-positions = <1 2 3>;
+            layers = <0>;
+        };
+
+        game {
+            bindings = <&to 5>;
+            key-positions = <11 12 13>;
+            layers = <0 2>;
+        };
+
+        num_l {
+            bindings = <&to 2>;
+            key-positions = <11 12 13>;
+            layers = <4 5 6>;
+        };
+
+        num_r {
+            bindings = <&to 2>;
+            key-positions = <16 17 18>;
+            layers = <4 5 6>;
+        };
+*/
+    };
+};
