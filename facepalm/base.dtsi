@@ -1,46 +1,44 @@
-// ZMK Core Includes
 #include <behaviors.dtsi>
 #include <behaviors/num_word.dtsi> // requires https://github.com/urob/zmk-auto-layer module
+#include <zmk-helpers/helper.h>
 #include <dt-bindings/zmk/keys.h>
-#include <dt-bindings/zmk/bt.h>
-#include <dt-bindings/zmk/outputs.h>
 
-// Meh key
-#define MEH LS(LC(LALT))
+#ifdef CONFIG_WIRELESS
+	#include <dt-bindings/zmk/bt.h>
+	#include <dt-bindings/zmk/outputs.h>
+#endif
 
-// Behaviors Constants
+#define BASE 0
+#define QWRT 1
+#define GAME 2
+#define EMAG 3
+#define NUM  4
+#define FUN  5
+
+#define XXX &none
+#define ___ &trans
+
+/* Global Defaults */
+
+// Behaviors
 #define TAPPING_TERM_MS 280
 #define QUICK_TAP_MS 175
 #define REQUIRE_PRIOR_IDLE_MS 150
 
-// Combos Constants
+// Combos
 #define COMBO_TERM_DEFAULT 30
 #define COMBO_QUICK_TAP_MS 100
-
-// Key positions per hand
-#define KEYS_L 0 1 2 3 4 10 11 12 13 14 20 21 22 23 24 25
-#define KEYS_R 5 6 7 8 9 15 16 17 18 19 26 27 28 29 30 31
-#define THUMBS 32 33 34 35 36 37
 
 #include "behaviors.dtsi"
 #include "macros.dtsi"
 #include "combos.dtsi"
 
-/**
- *  Layers:
- *      0 - base (Colemak-DH)
- *      1 - alt  (Qwerty w/ mods)
- *      2 - game (Qwerty w/o mods)
- *      3 - emag (Qwerty w/o mods, mirrored)
- *      4 - num
- *      5 - nav
- *      6 - fun
- */
+#define _LEFT_THUMBS_  &mt LALT ESC  &mt LCTRL SPACE &mt LSHFT TAB
+#define _RIGHT_THUMBS_ &mt RSHFT RET &mbsp RCTRL 0   GRAVE_TILDE
 
-#include "colemak-dh.dtsi"
-#include "qwerty.dtsi"
-#include "qwerty_no_hrm.dtsi"
-#include "qwerty_no_hrm_mirrored.dtsi"
-#include "num.dtsi"
-#include "nav.dtsi"
-#include "fun.dtsi"
+#include "colemak-dh.dtsi"              // BASE
+#include "qwerty.dtsi"					// QWRT
+#include "qwerty_no_hrm.dtsi"			// GAME
+#include "qwerty_no_hrm_mirrored.dtsi"  // EMAG
+#include "num.dtsi"						// NUM
+#include "fun.dtsi"						// FUN

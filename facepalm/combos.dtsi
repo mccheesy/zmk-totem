@@ -2,154 +2,228 @@
     combos {
         compatible = "zmk,combos";
 
-		/* Symbols - \{[(< >]}/ */
+		/* Symbols - /{[(< >]}\ */
         fslh {
             bindings = <&kp FSLH>;
-            key-positions = <0 10>;
-            layers = <0 1 2>;
+            key-positions = <LT4 LM4>;
+            layers = <BASE QWRT GAME NUM>;
         };
 
         lbrc {
             bindings = <&kp LBRC>;
-            key-positions = <1 11>;
-            layers = <0 1 2>;
+            key-positions = <LT3 LM3>;
+            layers = <BASE QWRT GAME NUM>;
         };
 
         lbkt {
             bindings = <&kp LBKT>;
-            key-positions = <2 12>;
-            layers = <0 1 2>;
+            key-positions = <LT2 LM2>;
+            layers = <BASE QWRT GAME NUM>;
         };
 
         lpar {
             bindings = <&kp LPAR>;
-            key-positions = <3 13>;
-            layers = <0 1 2>;
+            key-positions = <LT1 LM1>;
+            layers = <BASE QWRT GAME NUM>;
         };
 
         lt {
             bindings = <&kp LT>;
-            key-positions = <4 14>;
-            layers = <0 1 2>;
+            key-positions = <LT0 LM0>;
+            layers = <BASE QWRT GAME NUM>;
         };
 
         gt {
             bindings = <&kp GT>;
-            key-positions = <5 15>;
-            layers = <0 1 2>;
+            key-positions = <RT0 RM0>;
+            layers = <BASE QWRT GAME NUM>;
         };
 
         rpar {
             bindings = <&kp RPAR>;
-            key-positions = <6 16>;
-            layers = <0 1 2>;
+            key-positions = <RT1 RM1>;
+            layers = <BASE QWRT GAME NUM>;
         };
 
         rbkt {
             bindings = <&kp RBKT>;
-            key-positions = <7 17>;
-            layers = <0 1 2>;
+            key-positions = <RT2 RM2>;
+            layers = <BASE QWRT GAME NUM>;
         };
 
         rbrc {
             bindings = <&kp RBRC>;
-            key-positions = <8 18>;
-            layers = <0 1 2>;
+            key-positions = <RT3 RM3>;
+            layers = <BASE QWRT GAME NUM>;
         };
 
 		bslh {
 			bindings = <&kp BSLH>;
-			key-positions = <9 19>;
-			layers = <0 1 2>;
+			key-positions = <RT4 RM4>;
+			layers = <BASE QWRT GAME NUM>;
+		};
+
+		/* Symbols -_ */
+		under_l {
+			bindings = <&kp UNDER>;
+			key-positions = <LM1 LB1>;
+			layers = <0 1 2 3 4>;
+		};
+
+		minus_l {
+			bindings = <&kp MINUS>;
+			key-positions = <LM0 LB0>;
+			layers = <0 1 2 3 4>;
+		};
+
+		minus_r {
+			bindings = <&kp MINUS>;
+			key-positions = <RM0 RB0>;
+			layers = <BASE QWRT GAME NUM>;
+		};
+
+		under_r {
+			bindings = <&kp UNDER>;
+			key-positions = <RM1 RB1>;
+			layers = <BASE QWRT GAME NUM>;
 		};
 
 		/* Left-hand symbols emag layer */
-        gt {
+        gt_l {
             bindings = <&kp GT>;
-            key-positions = <4 14>;
-            layers = <3>;
+            key-positions = <LT0 LM0>;
+            layers = <EMAG>;
         };
 
-        rpar {
+        rpar_l {
             bindings = <&kp RPAR>;
-            key-positions = <3 13>;
-            layers = <3>;
+            key-positions = <LT1 LM1>;
+            layers = <EMAG>;
         };
 
-        rbkt {
+        rbkt_l {
             bindings = <&kp RBKT>;
-            key-positions = <2 12>;
-            layers = <3>;
+            key-positions = <LT2 LM2>;
+            layers = <EMAG>;
         };
 
-        rbrc {
+        rbrc_l {
             bindings = <&kp RBRC>;
-            key-positions = <1 11>;
-            layers = <3>;
+            key-positions = <LT3 LM3>;
+            layers = <EMAG>;
         };
 
-		fslh {
+		fslh_l {
 			bindings = <&kp FSLH>;
-			key-positions = <0 10>;
-			layers = <3>;
+			key-positions = <LT4 LM4>;
+			layers = <EMAG>;
 		};
 
 		/* Launcher - home row middle + ring */
         lchl {
             bindings = <&kp LG(SPACE)>;
-            key-positions = <11 13>;
-            layers = <0 1 2 3>;
+            key-positions = <LM1 LM3>;
+            layers = <BASE QWRT GAME>;
         };
 
         lchr {
             bindings = <&kp RG(SPACE)>;
-            key-positions = <16 18>;
-            layers = <0 1 2 3>;
+            key-positions = <RM1 RM3>;
+            layers = <BASE QWRT GAME>;
         };
 
 		/* Layer toggles */
         base {
-            bindings = <&to 0>;
-            key-positions = <0 1>;
+            bindings = <&to BASE>;
+            key-positions = <LT4 LT3>;
         };
 
-        alt {
-            bindings = <&to 1>;
-            key-positions = <1 2>;
+        qwrt {
+            bindings = <&to QWRT>;
+            key-positions = <LT3 LT2>;
         };
 
         game {
-            bindings = <&to 2>;
-            key-positions = <2 3>;
+            bindings = <&to GAME>;
+            key-positions = <LT2 LT1>;
         };
 
         emag {
-            bindings = <&to 3>;
-            key-positions = <3 4>;
+            bindings = <&to EMAG>;
+            key-positions = <LT1 LT0>;
         };
 
         num_l {
-            bindings = <&to 4>;
-            key-positions = <11 12 13>;
-            layers = <0 1 2 3>;
+            bindings = <&sl NUM>;
+            key-positions = <LM1 LM2 LM3>;
+            layers = <BASE QWRT GAME>;
         };
 
         num_r {
-            bindings = <&to 4>;
-            key-positions = <16 17 18>;
-            layers = <0 1 2 3>;
+            bindings = <&sl NUM>;
+            key-positions = <RM1 RM2 RM3>;
+            layers = <BASE QWRT GAME>;
         };
 
 		fun_l {
-			bindings = <&sl 6>;
-			key-positions = <22 23 24>;
-			layers = <0 1 2 3>;
-		}
+			bindings = <&sl FUN>;
+			key-positions = <LB1 LB2 LB3>;
+			layers = <BASE QWRT GAME>;
+		};
 
 		fun_r {
-			bindings = <&sl 6>;
-			key-positions = <27 28 29>;
-			layers = <0 1 2 3>;
-		}
+			bindings = <&sl FUN>;
+			key-positions = <RB1 RB2 RB3>;
+			layers = <BASE QWRT GAME>;
+		};
+	
+		/* Bluetooth & System */
+		btsel0 {
+			bindings = <&bt BT_SEL 0>;
+			key-positions = <LT4 LM4>;
+			layers = <FUN>;
+		};
+
+		btsel1 {
+			bindings = <&bt BT_SEL 1>;
+			key-positions = <LT3 LM3>;
+			layers = <FUN>;
+		};
+
+		btsel2 {
+			bindings = <&bt BT_SEL 2>;
+			key-positions = <LT2 LM2>;
+			layers = <FUN>;
+		};
+
+		btsel3 {
+			bindings = <&bt BT_SEL 3>;
+			key-positions = <LT1 LM1>;
+			layers = <FUN>;
+		};
+
+		btsel4 {
+			bindings = <&bt BT_SEL 4>;
+			key-positions = <LT0 LM0>;
+			layers = <FUN>;
+		};
+
+		btclr {
+			bindings = <&bt BT_CLR>;
+			key-positions = <LM3 LB3>;
+			layers = <FUN>;
+		};
+
+		btclrall {
+			bindings = <&bt BT_CLR_ALL>;
+			key-positions = <LM4 LB4>;
+			layers = <FUN>;
+		};
+
+		rst_boot {
+			bindings = <&rst_boot 0 0>;
+			key-positions = <LM0 LB0>;
+			layers = <FUN>;
+		};
     };
 };
