@@ -274,7 +274,7 @@
 
         function {
             bindings = <&sl 3>;
-            key-positions = <6 7 8>;
+            key-positions = <6 8>;
             layers = <0>;
         };
     };
@@ -285,30 +285,30 @@
         base {
             display-name = "base";
             bindings = <
-       &kp Q        &kp W        &kp F  &kp P              &kp B            &kp J      &kp L             &kp U               &kp Y            &as SQT
-       &hml LGUI A  &hml LALT R  &kp S  &hll 1 T           &kp G            &kp M      &hlr 2 N          &kp E               &hmr LALT I      &hmr RGUI O
-&none  &kp Z        &kp X        &kp C  &kp D              &kp V            &kp K      &kp H             &as_ht QMARK COMMA  &as_ht EXCL DOT  &mt ESC RET  &none
-                                 &none  &lt_space LCTRL 0  &mt LSHFT TAB    &sk RSHFT  &rt_bspc RCTRL 0  &none
+       &kp Q        &kp W        &kp F  &kp P              &kp B        &kp J      &kp L             &kp U               &kp Y            &as SQT
+       &hml LGUI A  &hml LALT R  &kp S  &hll 1 T           &kp G        &kp M      &hlr 2 N          &kp E               &hmr LALT I      &hmr RGUI O
+&none  &kp Z        &kp X        &kp C  &kp D              &kp V        &kp K      &kp H             &as_ht QMARK COMMA  &as_ht EXCL DOT  &mt ESC RET  &none
+                                 &none  &lt_space LCTRL 0  &sk LSHFT    &sk RSHFT  &rt_bspc RCTRL 0  &none
             >;
         };
 
         nav {
             display-name = "navigation";
             bindings = <
-        &trans         &trans    &trans     &trans     &trans    &kp HOME         &kp PG_DN        &kp PG_UP  &kp END    &kp INS
-        &hml LGUI ESC  &kp LALT  &kp LCTRL  &kp LSHFT  &trans    &kp LEFT         &kp DOWN         &kp UP     &kp RIGHT  &trans
-&trans  &trans         &trans    &trans     &trans     &trans    &kp PSCRN        &kp LC(PSCRN)    &trans     &trans     &trans   &trans
-                                 &trans     &trans     &trans    &mt RSHFT MINUS  &mt RCTRL UNDER  &trans
+        &trans    &trans    &trans     &trans           &trans             &kp HOME         &kp PG_DN        &kp PG_UP  &kp END    &kp INS
+        &sk LGUI  &sk LALT  &sk LCTRL  &sk LSHFT        &trans             &kp LEFT         &kp DOWN         &kp UP     &kp RIGHT  &trans
+&trans  &trans    &trans    &trans     &trans           &trans             &kp PSCRN        &kp LC(PSCRN)    &trans     &trans     &trans   &trans
+                            &trans     &mt LCTRL UNDER  &mt LSHFT MINUS    &mt RSHFT MINUS  &mt RCTRL UNDER  &trans
             >;
         };
 
         num {
             display-name = "number";
             bindings = <
-        &trans           &kp FSLH  &kp PLUS  &kp EQUAL        &kp TILDE          &trans  &trans     &trans     &trans    &trans
-        &as_ht GRAVE N1  &as N2    &as N3    &as N4           &as N5             &trans  &kp RSHFT  &kp RCTRL  &kp LALT  &kp RGUI
-&trans  &as N6           &as N7    &as N8    &as_ht BSLH N9   &as_ht PIPE N0     &trans  &trans     &trans     &trans    &trans    &trans
-                                   &trans    &mt LCTRL UNDER  &mt LSHFT MINUS    &trans  &trans     &trans
+        &trans           &kp FSLH  &kp PLUS  &kp EQUAL        &trans             &trans           &trans           &trans     &trans    &trans
+        &as_ht GRAVE N1  &as N2    &as N3    &as N4           &as N5             &trans           &sk RSHFT        &sk RCTRL  &sk LALT  &sk RGUI
+&trans  &as N6           &as N7    &as N8    &as_ht BSLH N9   &as_ht PIPE N0     &trans           &trans           &trans     &trans    &trans    &trans
+                                   &trans    &mt LCTRL UNDER  &mt LSHFT MINUS    &mt RSHFT MINUS  &mt RCTRL UNDER  &trans
             >;
         };
 
@@ -316,8 +316,8 @@
             display-name = "fun";
             bindings = <
         &kp F11  &kp F12  &kp F13  &kp F14  &kp F15    &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4
-        &kp F1   &kp F2   &kp F3   &kp F4   &kp F5     &trans        &trans        &trans        &trans        &trans
-&trans  &kp F6   &kp F7   &kp F8   &kp F9   &kp F10    &trans        &trans        &trans        &trans        &trans        &bt BT_CLR
+        &kp F1   &kp F2   &kp F3   &kp F4   &kp F5     &trans        &sk RSHFT     &sk RCTRL     &sk LALT      &sk RGUI
+&trans  &kp F6   &kp F7   &kp F8   &kp F9   &kp F10    &bt BT_CLR    &trans        &trans        &trans        &trans        &trans
                           &trans   &trans   &trans     &trans        &trans        &trans
             >;
         };
