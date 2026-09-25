@@ -11,19 +11,33 @@
 // ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
 
 #include <behaviors.dtsi>
+#include <behaviors/num_word.dtsi>
+
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
-
+#include <dt-bindings/zmk/pointing.h>
+ 
 &lt {
-    quick-tap-ms = <175>;
-    flavor = "balanced";
+   tapping-term-ms = <220>;
+   quick-tap-ms = <220>;
+   flavor = "tap-preferred";
     require-prior-idle-ms = <150>;
 };
 
 &mt {
-    quick-tap-ms = <175>;
-    flavor = "balanced";
+   tapping-term-ms = <220>;
+   quick-tap-ms = <220>;
+   flavor = "tap-preferred";
     require-prior-idle-ms = <150>;
+};
+
+&sk {
+    release-after-ms = <900>;
+    quick-release;
+};
+
+&sl {
+    ignore-modifiers;
 };
 
 / {
@@ -82,6 +96,16 @@
             hold-trigger-key-positions = <4 3 2 1 0 20 10 11 21 12 13 14 23 22 24 25 32 33 34 35 36 37>;
         };
 
+        btclr_ht: bluetooth_clear_hold_tap {
+            compatible = "zmk,behavior-hold-tap";
+            display-name = "Bluetooth Clear Hold-Tap";
+            bindings = <&btclrall>, <&btclr>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <5000>;
+            flavor = "tap-preferred";
+        };
+
         as_ht: autoshift_hold_tap {
             compatible = "zmk,behavior-hold-tap";
             bindings = <&sh>, <&kp>;
@@ -89,6 +113,49 @@
             #binding-cells = <2>;
             tapping-term-ms = <135>;
             flavor = "tap-preferred";
+        };
+
+        numd: num_dance {
+            compatible = "zmk,behavior-tap-dance";
+            display-name = "Num Dance";
+            bindings = <&sl 2>, <&num_word 2>;
+
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+        };
+
+        // Tap: num_word | double-tap: sticky num-layer | hold: num-layer
+        // see: https://github.com/urob/zmk-config/config/base.keymap:116-121
+        mnum: magic_num {
+            compatible = "zmk,behavior-hold-tap";
+            display-name = "Magic Number Layer-Tap";
+            bindings = <&mo>, <&numd>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            quick-tap-ms = <175>;
+            flavor = "balanced";
+        };
+
+        shft_cpwd: shift_capsword {
+            compatible = "zmk,behavior-mod-morph";
+            display-name = "Shift Caps-Word";
+            bindings = <&sk LSHFT>, <&caps_word>;
+
+            #binding-cells = <0>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        mshft: magic_shift {
+            compatible = "zmk,behavior-hold-tap";
+            display-name = "Magic Shift";
+            bindings = <&kp>, <&shft_cpwd>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <220>;
+            quick-tap-ms = <175>;
+			require-prior-idle-ms = <150>;
+            flavor = "balanced";
         };
 
         bspc_del: bspc_del {
@@ -99,17 +166,6 @@
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
 
-        rt_bspc: rt_bspc {
-            compatible = "zmk,behavior-hold-tap";
-            bindings = <&kp>, <&bspc_del>;
-
-            #binding-cells = <2>;
-            tapping-term-ms = <200>;
-            quick-tap-ms = <175>;
-            require-prior-idle-ms = <150>;
-            flavor = "balanced";
-        };
-
         space_sentence: space_sentence {
             compatible = "zmk,behavior-mod-morph";
             bindings = <&kp SPACE>, <&sentence>;
@@ -118,12 +174,25 @@
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
 
-        lt_space: lt_space {
+        spc_tap: spc_tap {
             compatible = "zmk,behavior-hold-tap";
+			display-name = "Space-Tap";
             bindings = <&kp>, <&space_sentence>;
 
             #binding-cells = <2>;
-            tapping-term-ms = <200>;
+            tapping-term-ms = <220>;
+            quick-tap-ms = <175>;
+            require-prior-idle-ms = <150>;
+            flavor = "balanced";
+        };
+
+        bsp_tap: bsp_tap {
+            compatible = "zmk,behavior-hold-tap";
+			display-name = "Backspace-Tap";
+            bindings = <&kp>, <&bspc_del>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <220>;
             quick-tap-ms = <175>;
             require-prior-idle-ms = <150>;
             flavor = "balanced";
@@ -158,125 +227,123 @@
             #binding-cells = <1>;
         };
 
-        sentence: dot_space {
+        sentence: sentence {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&macro_tap>, <&kp DOT &kp SPACE &sk LSHIFT>;
+            bindings = <&macro_tap>, <&kp DOT &kp SPACE &sk LSHFT>;
 
-            label = "DOT_SPACE";
+            label = "SENTENCE";
+        };
+
+        btclr: bluetooth_clear {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&macro_tap>, <&bt BT_CLR>;
+        };
+
+        btclrall: bluetooth_clear_all {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&macro_tap>, <&bt BT_CLR_ALL>;
         };
     };
 
     combos {
         compatible = "zmk,combos";
-
         lt4 {
             bindings = <&kp LBRC>;
             key-positions = <1 11>;
-            layers = <0>;
         };
 
         lt3 {
             bindings = <&kp LBKT>;
             key-positions = <2 12>;
-            layers = <0>;
         };
 
         lt2 {
             bindings = <&kp LPAR>;
             key-positions = <3 13>;
-            layers = <0>;
         };
 
         lt1 {
             bindings = <&kp LT>;
             key-positions = <4 14>;
-            layers = <0>;
         };
 
         rt1 {
             bindings = <&kp GT>;
             key-positions = <5 15>;
-            layers = <0>;
         };
 
         rt2 {
             bindings = <&kp RPAR>;
             key-positions = <6 16>;
-            layers = <0>;
         };
 
         rt3 {
             bindings = <&kp RBKT>;
             key-positions = <7 17>;
-            layers = <0>;
         };
 
         rt4 {
             bindings = <&kp RBRC>;
             key-positions = <8 18>;
-            layers = <0>;
         };
 
         lb4 {
-            bindings = <&kp BSLH>;
-            key-positions = <11 22>;
-            layers = <0>;
+            bindings = <&kp GRAVE>;
+            key-positions = <11 21>;
         };
 
         lb3 {
-            bindings = <&kp GRAVE>;
-            key-positions = <12 23>;
-            layers = <0>;
+            bindings = <&kp SEMI>;
+            key-positions = <12 22>;
         };
 
         lb2 {
-            bindings = <&kp SEMI>;
-            key-positions = <13 24>;
-            layers = <0>;
+            bindings = <&kp BSLH>;
+            key-positions = <13 23>;
         };
 
         lb1 {
-            bindings = <&kp ESC>;
-            key-positions = <14 25>;
-            layers = <0>;
+            bindings = <&kp UNDER>;
+            key-positions = <14 24>;
         };
 
         rb1 {
-            bindings = <&kp RET>;
-            key-positions = <15 26>;
-            layers = <0>;
+            bindings = <&kp MINUS>;
+            key-positions = <15 25>;
         };
 
         rb2 {
-            bindings = <&kp COLON>;
-            key-positions = <16 27>;
-            layers = <0>;
+            bindings = <&kp FSLH>;
+            key-positions = <16 26>;
         };
 
         rb3 {
-            bindings = <&kp TILDE>;
-            key-positions = <17 28>;
-            layers = <0>;
+            bindings = <&kp COLON>;
+            key-positions = <17 27>;
         };
 
         rb4 {
-            bindings = <&kp FSLH>;
-            key-positions = <18 29>;
-            layers = <0>;
+            bindings = <&kp TILDE>;
+            key-positions = <18 28>;
         };
 
         launcher {
             bindings = <&kp LG(SPACE)>;
             key-positions = <11 13>;
-            layers = <0>;
         };
 
         function {
             bindings = <&sl 3>;
             key-positions = <6 8>;
-            layers = <0>;
         };
+
+		esc {
+			bindings = <&kp ESC>;
+			key-positions = <11 13>;
+		};
     };
 
     keymap {
@@ -285,40 +352,40 @@
         base {
             display-name = "base";
             bindings = <
-       &kp Q        &kp W        &kp F  &kp P              &kp B        &kp J      &kp L             &kp U               &kp Y            &as SQT
-       &hml LGUI A  &hml LALT R  &kp S  &hll 1 T           &kp G        &kp M      &hlr 2 N          &kp E               &hmr LALT I      &hmr RGUI O
-&none  &kp Z        &kp X        &kp C  &kp D              &kp V        &kp K      &kp H             &as_ht QMARK COMMA  &as_ht EXCL DOT  &mt ESC RET  &none
-                                 &none  &lt_space LCTRL 0  &sk LSHFT    &sk RSHFT  &rt_bspc RCTRL 0  &none
+       &kp Q        &kp W        &kp F  &kp P             &kp B         &kp J         &kp L             &kp U               &kp Y            &as SQT
+       &hml LGUI A  &hml LALT R  &kp S  &hll 1 T          &kp G         &kp M         &kp N             &kp E               &hmr LALT I      &hmr RGUI O
+&none  &kp Z        &kp X        &kp C  &kp D             &kp V         &kp K         &kp H             &as_ht QMARK COMMA  &as_ht EXCL DOT  &mnum 2 0    &none
+                                 &none  &spc_tap LCTRL 0  &mshft 0 TAB  &mshft 0 RET  &bsp_tap RCTRL 0  &none
             >;
         };
 
-        nav {
-            display-name = "navigation";
+        navigation {
+            display-name = "nav";
             bindings = <
-        &trans    &trans    &trans     &trans           &trans             &kp HOME         &kp PG_DN        &kp PG_UP  &kp END    &kp INS
-        &sk LGUI  &sk LALT  &sk LCTRL  &sk LSHFT        &trans             &kp LEFT         &kp DOWN         &kp UP     &kp RIGHT  &trans
-&trans  &trans    &trans    &trans     &trans           &trans             &kp PSCRN        &kp LC(PSCRN)    &trans     &trans     &trans   &trans
-                            &trans     &mt LCTRL UNDER  &mt LSHFT MINUS    &mt RSHFT MINUS  &mt RCTRL UNDER  &trans
+        &trans   &trans    &trans     &trans     &trans  &kp HOME   &kp PG_DN      &kp PG_UP  &kp END    &kp INS
+        &sk LGUI &sk LALT  &sk LCTRL  &sk LSHFT  &trans  &kp LEFT   &kp DOWN       &kp UP     &kp RIGHT  &trans
+&trans  &trans   &trans    &kp BSLH   &trans     &trans  &kp PSCRN  &kp LC(PSCRN)  &trans     &trans     &trans   &trans
+                           &trans     &trans     &trans  &trans     &trans         &trans
             >;
         };
 
-        num {
-            display-name = "number";
+        number {
+            display-name = "num";
             bindings = <
-        &trans           &kp FSLH  &kp PLUS  &kp EQUAL        &trans             &trans           &trans           &trans     &trans    &trans
-        &as_ht GRAVE N1  &as N2    &as N3    &as N4           &as N5             &trans           &sk RSHFT        &sk RCTRL  &sk LALT  &sk RGUI
-&trans  &as N6           &as N7    &as N8    &as_ht BSLH N9   &as_ht PIPE N0     &trans           &trans           &trans     &trans    &trans    &trans
-                                   &trans    &mt LCTRL UNDER  &mt LSHFT MINUS    &mt RSHFT MINUS  &mt RCTRL UNDER  &trans
+        &trans           &kp FSLH  &kp PLUS  &kp EQUAL       &none           &trans  &trans     &trans     &trans    &trans
+        &as_ht GRAVE N1  &as N2    &as N3    &as N4          &as N5          &trans  &sk RSHFT  &sk RCTRL  &sk LALT  &sk RGUI
+&trans  &as N6           &as N7    &as N8    &as_ht BSLH N9  &as_ht PIPE N0  &trans  &trans     &trans     &trans    &trans    &trans
+                                   &trans    &trans          &trans          &trans  &trans     &trans
             >;
         };
 
-        fun {
+        function {
             display-name = "fun";
             bindings = <
-        &kp F11  &kp F12  &kp F13  &kp F14  &kp F15    &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4
-        &kp F1   &kp F2   &kp F3   &kp F4   &kp F5     &trans        &sk RSHFT     &sk RCTRL     &sk LALT      &sk RGUI
-&trans  &kp F6   &kp F7   &kp F8   &kp F9   &kp F10    &bt BT_CLR    &trans        &trans        &trans        &trans        &trans
-                          &trans   &trans   &trans     &trans        &trans        &trans
+        &kp F11  &kp F12  &kp F13  &kp F14  &kp F15    &bt BT_SEL 0   &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4
+        &kp F1   &kp F2   &kp F3   &kp F4   &kp F5     &trans         &sk RSHFT     &sk RCTRL     &sk LALT      &sk RGUI
+&trans  &kp F6   &kp F7   &kp F8   &kp F9   &kp F10    &btclr_ht 0 0  &trans        &trans        &trans        &trans        &trans
+                          &trans   &trans   &trans     &trans         &trans        &trans
             >;
         };
     };
